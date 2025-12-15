@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Interface Sportive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <style>
+    /* Supprime les marges par défaut du body et html */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Styles pour la carte */
+    #map {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      border-radius: 10px;
+    }
+    
+    /* Style pour le bouton de localisation */
+    .leaflet-control-locate {
+      background: white;
+      border: 2px solid rgba(0,0,0,0.2);
+      border-radius: 4px;
+      width: 34px;
+      height: 34px;
+      line-height: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Masquer l'input file par défaut */
+    .file-input {
+      display: none;
+    }
+    
+    /* Style pour la prévisualisation */
+    .preview-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .preview-image, .preview-video {
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .remove-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      color: #E74C3C;
+      border: none;
+    }
+    
+    /* Style pour l'emoji sélectionné */
+    .emoji-selected {
+      background: linear-gradient(to bottom right, #FF6B35, #E74C3C) !important;
+      color: white !important;
+      border-color: #E74C3C !important;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    }
+    
+    /* Styles personnalisés pour améliorer le responsive */
+    @media (max-width: 640px) {
+      .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-button {
+        flex: 1 0 auto;
+        min-width: 140px;
+      }
+    }
+  </style>
+  
+  <script>
+    // Variable pour stocker l'emoji sélectionné
+    let selectedEmoji = '😊'; // Valeur par défaut
+    
+    // Variables pour la carte
+    let map = null;
+    let userMarker = null;
+    let userLocation = null;
+    
+    // Fonction pour mettre à jour la valeur RPE
+    function updateRPEValue() {
+      const rpeSlider = document.getElementById('rpeSlider');
+      const rpeValue = document.getElementById('rpeValue');
+      
+      rpeValue.textContent = `Niveau sélectionné : ${rpeSlider.value}`;
+    }
+    
+    // Fonction pour sélectionner un emoji
+    function selectEmoji(emoji, element) {
+      // Réinitialiser tous les emojis
+      const allEmojis = document.querySelectorAll('.emoji-btn');
+      allEmojis.forEach(btn => {
+        btn.classList.remove('emoji-selected');
+        btn.classList.remove('text-white');
+        btn.classList.add('bg-white');
+        btn.classList.add('text-[#0A1F2F]');
+        // Réinitialiser le dégradé pour les boutons non sélectionnés
+        btn.style.background = '';
+      });
+      
+      // Appliquer le style sélectionné à l'emoji cliqué
+      element.classList.add('emoji-selected');
+      element.classList.add('text-white');
+      element.classList.remove('bg-white');
+      element.classList.remove('text-[#0A1F2F]');
+      
+      // Stocker l'emoji sélectionné
+      selectedEmoji = emoji;
+      
+      console.log(`Emoji sélectionné : ${selectedEmoji}`);
+    }
+    
+    // Fonction pour gérer la sélection de fichiers
+    function handleFileSelect(event) {
+      const fileInput = event.target;
+      const file = fileInput.files[0];
+      const previewContainer = document.getElementById('previewContainer');
+      const fileLabel = document.getElementById('fileLabel');
+      
+      if (file) {
+        // Vérifier le type de fichier
+        const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        const validVideoTypes = ['video/mp4', 'video/webm', 'video/ogg'];
+        
+        const isImage = validImageTypes.includes(file.type);
+        const isVideo = validVideoTypes.includes(file.type);
+        const isGif = file.type === 'image/gif';
+        
+        if (isImage || isVideo || isGif) {
+          // Créer un objet URL pour la prévisualisation
+          const objectURL = URL.createObjectURL(file);
+          
+          // Afficher la prévisualisation
+          if (isImage || isGif) {
+            previewContainer.innerHTML = `
+              <img src="${objectURL}" alt="Prévisualisation" class="preview-image">
+              <button type="button" onclick="removeFile()" class="remove-btn">×</button>
+            `;
+          } else if (isVideo) {
+            previewContainer.innerHTML = `
+              <video controls class="preview-video">
+                <source src="${objectURL}" type="${file.type}">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+              <button type="button" onclick="removeFile()" class="remove-btn">×</button>
+            `;
+          }
+          
+          // Changer le label
+          fileLabel.innerHTML = `
+            <div class="text-center">
+              <div class="text-green-600 text-lg mb-1">✓</div>
+              <div class="font-semibold">Fichier sélectionné</div>
+              <div class="text-xs text-gray-500 mt-1">${file.name}</div>
+              <div class="text-xs text-gray-500">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+              <div class="text-xs text-blue-600 mt-2">Cliquez pour changer</div>
+            </div>
+          `;
+          
+          // Stocker le nom du fichier pour l'affichage
+          document.getElementById('fileName').textContent = file.name;
+        } else {
+          alert('Format de fichier non supporté. Veuillez sélectionner une image (JPG, PNG, GIF) ou une vidéo (MP4, WebM).');
+          fileInput.value = '';
+        }
+      }
+    }
+    
+    // Fonction pour supprimer le fichier sélectionné
+    function removeFile() {
+      const fileInput = document.getElementById('fileInput');
+      const previewContainer = document.getElementById('previewContainer');
+      const fileLabel = document.getElementById('fileLabel');
+      
+      // Réinitialiser l'input file
+      fileInput.value = '';
+      
+      // Réinitialiser la prévisualisation
+      previewContainer.innerHTML = '';
+      
+      // Réinitialiser le label
+      fileLabel.innerHTML = `
+        <span class="text-3xl md:text-4xl lg:text-5xl text-[#FF6B35] mb-1 md:mb-2">+</span>
+        <span class="font-semibold text-center text-sm md:text-base lg:text-lg">Ajouter Vidéo / GIF / Image</span>
+        <span class="text-xs text-gray-500 mt-2">(MP4, JPG, PNG, GIF)</span>
+      `;
+      
+      // Réinitialiser le nom du fichier
+      document.getElementById('fileName').textContent = 'Aucun fichier sélectionné';
+    }
+    
+    // Fonction pour ouvrir le sélecteur de fichiers
+    function openFileSelector() {
+      document.getElementById('fileInput').click();
+    }
+    
+    // ============================================
+    // FONCTIONS POUR LA CARTE
+    // ============================================
+    
+    // Initialiser la carte
+    function initMap() {
+      // Coordonnées par défaut (Paris)
+      const defaultCenter = [48.8566, 2.3522];
+      
+      // Créer la carte
+      map = L.map('map').setView(defaultCenter, 13);
+      
+      // Ajouter la couche OpenStreetMap
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      
+      // Ajouter un bouton de localisation personnalisé
+      const locateButton = L.control({ position: 'topright' });
+      locateButton.onAdd = function() {
+        const btn = L.DomUtil.create('button', 'leaflet-control-locate');
+        btn.innerHTML = '📍';
+        btn.title = "Trouver ma position";
+        btn.onclick = function(e) {
+          e.stopPropagation();
+          findMyLocation();
+        };
+        return btn;
+      };
+      locateButton.addTo(map);
+      
+      // Ajouter un marqueur par défaut
+      userMarker = L.marker(defaultCenter)
+        .addTo(map)
+        .bindPopup("Carte GPS de votre activité<br>Cliquez sur 📍 pour votre position")
+        .openPopup();
+    }
+    
+    // Trouver la position de l'utilisateur
+    function findMyLocation() {
+      if (!navigator.geolocation) {
+        alert("La géolocalisation n'est pas supportée par votre navigateur.");
+        return;
+      }
+      
+      // Afficher un message de chargement
+      if (userMarker) {
+        userMarker.bindPopup("Recherche de votre position...").openPopup();
+      }
+      
+      // Demander la position
+      navigator.geolocation.getCurrentPosition(
+        // Succès
+        function(position) {
+          userLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          
+          // Centrer la carte sur la position
+          map.setView([userLocation.lat, userLocation.lng], 15);
+          
+          // Supprimer l'ancien marqueur et en créer un nouveau
+          if (userMarker) map.removeLayer(userMarker);
+          
+          userMarker = L.marker([userLocation.lat, userLocation.lng])
+            .addTo(map)
+            .bindPopup("<b>Vous êtes ici !</b><br>Position actuelle détectée.")
+            .openPopup();
+            
+          console.log("Position trouvée :", userLocation);
+          
+          // Mettre à jour le statut
+          document.getElementById('locationStatus').textContent = "Position détectée";
+          document.getElementById('locationStatus').classList.remove('text-gray-500');
+          document.getElementById('locationStatus').classList.add('text-green-600');
+        },
+        // Erreur
+        function(error) {
+          let errorMsg = "Impossible d'obtenir votre position. ";
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              errorMsg += "Vous avez refusé la demande de géolocalisation.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              errorMsg += "Les informations de localisation ne sont pas disponibles.";
+              break;
+            case error.TIMEOUT:
+              errorMsg += "La demande de localisation a expiré.";
+              break;
+            default:
+              errorMsg += "Une erreur inconnue s'est produite.";
+          }
+          alert(errorMsg);
+          
+          // Mettre à jour le statut
+          document.getElementById('locationStatus').textContent = "Position non disponible";
+          document.getElementById('locationStatus').classList.remove('text-gray-500');
+          document.getElementById('locationStatus').classList.add('text-red-600');
+        },
+        // Options
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    }
+    
+    // ============================================
+    // INITIALISATION DE LA PAGE
+    // ============================================
+    
+    function initializePage() {
+      // Initialiser la valeur RPE
+      updateRPEValue();
+      
+      // Sélectionner l'emoji par défaut au chargement
+      const defaultEmoji = document.querySelector('[data-emoji="😊"]');
+      if (defaultEmoji) {
+        selectEmoji('😊', defaultEmoji);
+      }
+      
+      // Initialiser la carte
+      initMap();
+    }
+    
+    // Initialiser la page quand elle est chargée
+    window.addEventListener('DOMContentLoaded', initializePage);
+    
+  </script>
+</head>
+
+<body class="min-h-screen w-full bg-white font-sans text-[#0A1F2F]">
+
+<!-- ======================================================
+  JOURNAL D'ACTIVITÉ
+====================================================== -->
+<section class="w-full min-h-screen bg-white
+              grid grid-rows-[auto_1fr] overflow-hidden">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="flex flex-col md:flex-row items-center gap-4 md:gap-6 px-4 md:px-8 py-3 md:py-4
+            bg-gradient-to-b from-[#0A1F2F] to-[#1A3B5A]">
+
+  <img src="./assets/img/logo.png"
+       class="h-16 w-16 md:h-20 md:w-20" alt="Logo">
+
+  <div class="flex flex-wrap justify-center gap-2 nav-buttons">
+    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
+                  text-gray-200 bg-white/10
+                  hover:bg-orange-500/25 hover:text-[#FF6B35]
+                  transition hover:-translate-y-0.5 nav-button">
+      Accueil
+    </button>
+
+    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-bold text-white
+                  bg-gradient-to-br from-[#FF6B35] to-[#E74C3C]
+                  shadow-[0_4px_12px_rgba(255,107,53,0.4)] nav-button">
+      Journal d'Activité
+    </button>
+
+    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
+                  text-gray-200 bg-white/10 hover:bg-orange-500/25
+                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
+      Progression
+    </button>
+
+    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
+                  text-gray-200 bg-white/10 hover:bg-orange-500/25
+                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
+      Récompenses
+    </button>
+
+    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
+                  text-gray-200 bg-white/10 hover:bg-orange-500/25
+                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
+      Chat Coach
+    </button>
+
+    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
+                  text-gray-200 bg-white/10 hover:bg-orange-500/25
+                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
+      Paramètres
+    </button>
+  </div>
+</nav>
+
+<!-- ================= CONTENU ================= -->
+<div class="p-4 md:p-6 lg:p-10 bg-white overflow-y-auto h-full">
+
+  <!-- TITRE -->
+  <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-8 md:mb-10 lg:mb-12 relative
+             after:content-[''] after:absolute after:-bottom-2 md:after:-bottom-3 lg:after:-bottom-4
+             after:left-1/2 after:-translate-x-1/2
+             after:w-16 md:after:w-18 lg:after:w-20 after:h-0.5 md:after:h-1 after:rounded
+             after:bg-gradient-to-r from-[#FF6B35] to-[#E74C3C]">
+    Ma séance d'Aujourd'hui
+  </h2>
+
+  <!-- FORMULAIRE -->
+  <div class="w-full max-w-full md:max-w-[90%] lg:max-w-[800px] mx-auto flex flex-col gap-4 md:gap-5 lg:gap-6">
+
+    <!-- TYPE DE SPORT -->
+    <input type="text" placeholder="Type de sport"
+           class="w-full px-4 py-3 md:px-5 md:py-4 border-2 border-[#D0D8E0] rounded-lg
+                  text-[#0A1F2F] bg-white
+                  focus:outline-none focus:border-[#FF6B35]
+                  focus:ring-4 focus:ring-orange-500/10 transition
+                  text-sm md:text-base">
+
+    <!-- RPE -->
+    <div class="w-full">
+      <p class="font-semibold mb-2 md:mb-3 text-sm md:text-base">Effort Perçu (RPE)</p>
+
+      <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4 w-full">
+        <span class="text-xs md:text-sm font-medium">1 (Très facile)</span>
+
+        <input type="range" min="1" max="10" value="5" id="rpeSlider"
+               oninput="updateRPEValue()"
+               class="w-full h-2 rounded-lg cursor-pointer
+                      bg-gradient-to-r from-[#D0D8E0]
+                      via-[#FF6B35] to-[#E74C3C]">
+
+        <span class="text-xs md:text-sm font-medium">10 (Maximal)</span>
+      </div>
+
+      <div class="mt-2 md:mt-3 font-bold text-center">
+        <p id="rpeValue" class="text-[#FF6B35] text-sm md:text-base">
+          Niveau sélectionné : 5
+        </p>
+      </div>
+    </div>
+
+    <!-- HUMEUR -->
+    <div class="w-full">
+      <p class="font-semibold mb-2 md:mb-3 text-sm md:text-base">Comment te sens-tu ?</p>
+
+      <div class="flex flex-wrap justify-center gap-2 md:gap-3 lg:gap-4 w-full">
+        <button type="button" 
+                data-emoji="🙂"
+                onclick="selectEmoji('🙂', this)"
+                class="emoji-btn text-xl md:text-2xl px-3 py-2 md:px-4 md:py-3 lg:px-5 lg:py-3 border-2 border-[#D0D8E0]
+                       rounded-lg md:rounded-xl bg-white text-[#0A1F2F]
+                       hover:scale-110 hover:border-[#FF6B35] transition flex-1 min-w-[70px]">
+          🙂
+        </button>
+
+        <button type="button" 
+                data-emoji="😊"
+                onclick="selectEmoji('😊', this)"
+                class="emoji-btn text-xl md:text-2xl px-3 py-2 md:px-4 md:py-3 lg:px-5 lg:py-3 border-2 border-[#D0D8E0]
+                       rounded-lg md:rounded-xl bg-white text-[#0A1F2F]
+                       hover:scale-110 hover:border-[#FF6B35] transition flex-1 min-w-[70px]">
+          😊
+        </button>
+
+        <button type="button" 
+                data-emoji="😐"
+                onclick="selectEmoji('😐', this)"
+                class="emoji-btn text-xl md:text-2xl px-3 py-2 md:px-4 md:py-3 lg:px-5 lg:py-3 border-2 border-[#D0D8E0]
+                       rounded-lg md:rounded-xl bg-white text-[#0A1F2F]
+                       hover:scale-110 hover:border-[#FF6B35] transition flex-1 min-w-[70px]">
+          😐
+        </button>
+
+        <button type="button" 
+                data-emoji="😔"
+                onclick="selectEmoji('😔', this)"
+                class="emoji-btn text-xl md:text-2xl px-3 py-2 md:px-4 md:py-3 lg:px-5 lg:py-3 border-2 border-[#D0D8E0]
+                       rounded-lg md:rounded-xl bg-white text-[#0A1F2F]
+                       hover:scale-110 hover:border-[#FF6B35] transition flex-1 min-w-[70px]">
+          😔
+        </button>
+      </div>
+      
+   
+    </div>
+
+    <!-- MAP / VIDEO -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 my-3 md:my-4 w-full">
+
+      <!-- CARTE INTERACTIVE -->
+      <div class="min-h-[120px] md:min-h-[150px] lg:min-h-[180px] border-2 border-[#D0D8E0] rounded-xl p-2">
+        <div id="map" class="h-full w-full"></div>
+        <div class="mt-2 text-center">
+          <p id="locationStatus" class="text-xs text-gray-500">Cliquez sur 📍 pour votre position</p>
+        </div>
+      </div>
+
+      <!-- INPUT FICHIER AVEC PRÉVISUALISATION -->
+      <div class="min-h-[120px] md:min-h-[150px] lg:min-h-[180px] relative">
+        <!-- Input file caché -->
+        <input type="file" 
+               id="fileInput" 
+               class="file-input"
+               accept="image/*,video/*"
+               onchange="handleFileSelect(event)">
+        
+        <!-- Zone de dépôt et de clic -->
+        <div onclick="openFileSelector()"
+             class="w-full h-full flex flex-col items-center justify-center
+                    border-2 border-dashed border-[#FF6B35]
+                    rounded-xl cursor-pointer
+                    hover:bg-[#FFF5F0] hover:-translate-y-1 transition p-4">
+          <div id="fileLabel" class="flex flex-col items-center justify-center">
+            <span class="text-3xl md:text-4xl lg:text-5xl text-[#FF6B35] mb-1 md:mb-2">+</span>
+            <span class="font-semibold text-center text-sm md:text-base lg:text-lg">Ajouter Vidéo / GIF / Image</span>
+            <span class="text-xs text-gray-500 mt-2">(MP4, JPG, PNG, GIF)</span>
+          </div>
+          
+          <!-- Affichage du nom du fichier -->
+          <div id="fileName" class="text-xs text-gray-600 mt-3 font-medium">
+            Aucun fichier sélectionné
+          </div>
+        </div>
+        
+        <!-- Conteneur pour la prévisualisation -->
+        <div id="previewContainer" class="preview-container mt-4"></div>
+      </div>
+
+    </div>
+    
+    <!-- INFORMATIONS FICHIER -->
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <p class="font-semibold text-blue-800 mb-2">📁 Formats acceptés :</p>
+      <ul class="text-sm text-blue-700 list-disc pl-5">
+        <li>Images : JPG, PNG, GIF, WebP</li>
+        <li>Vidéos : MP4, WebM, OGG</li>
+        <li>Taille maximale recommandée : 50MB</li>
+      </ul>
+    </div>
+
+    <!-- BOUTON -->
+    <button type="button" onclick="submitForm()" class="mt-3 md:mt-4 px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg lg:text-xl font-bold text-white
+                  bg-gradient-to-br from-[#FF6B35] to-[#E74C3C]
+                  shadow-[0_4px_12px_rgba(255,107,53,0.4)]
+                  hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(255,107,53,0.5)]
+                  transition w-full">
+      Enregistrer et valider l'activité
+    </button>
+
+  </div>
+</div>
+</section>
+
+<!-- Leaflet JavaScript (à charger après le DOM) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  // ============================================
+  // FONCTIONS SUPPLÉMENTAIRES
+  // ============================================
+  
+  // Fonction pour soumettre le formulaire
+  function submitForm() {
+    const sportType = document.querySelector('input[type="text"]').value;
+    const rpeValue = document.getElementById('rpeSlider').value;
+    
+    // Préparer les données
+    const formData = {
+      sport: sportType,
+      rpe: rpeValue,
+      mood: selectedEmoji,
+      location: userLocation,
+      timestamp: new Date().toISOString()
+    };
+    
+    // Afficher les données dans la console
+    console.log('=== Données du formulaire ===', formData);
+    
+    // Afficher une alerte avec les informations
+    let locationInfo = "Non capturée";
+    if (userLocation) {
+      locationInfo = `Lat: ${userLocation.lat.toFixed(6)}, Lng: ${userLocation.lng.toFixed(6)}`;
+    }
+    
+    alert(`✅ Activité enregistrée !\n\nSport: ${sportType}\nRPE: ${rpeValue}\nHumeur: ${selectedEmoji}\nPosition: ${locationInfo}\n\nLes données ont été enregistrées dans la console.`);
+    
+    // Ici, vous pourriez ajouter l'envoi des données à un serveur
+    // fetch('/api/activities', { method: 'POST', body: JSON.stringify(formData) })
+  }
+  
+  // Mettre à jour l'affichage de l'emoji sélectionné
+  function updateSelectedEmojiDisplay() {
+    const display = document.getElementById('selectedEmojiDisplay');
+    if (display) {
+      display.textContent = selectedEmoji;
+    }
+  }
+  
+  // Modifier la fonction selectEmoji pour mettre à jour l'affichage
+  const originalSelectEmoji = selectEmoji;
+  selectEmoji = function(emoji, element) {
+    originalSelectEmoji(emoji, element);
+    updateSelectedEmojiDisplay();
+  };
+  
+  // Initialiser l'affichage de l'emoji
+  document.addEventListener('DOMContentLoaded', function() {
+    updateSelectedEmojiDisplay();
+  });
+  
+  // Fonction pour démarrer le suivi GPS (optionnel - pour un tracé complet)
+  let watchId = null;
+  let trackPoints = [];
+  
+  function startGPSTracking() {
+    if (!navigator.geolocation) {
+      alert("La géolocalisation n'est pas supportée par votre navigateur.");
+      return;
+    }
+    
+    // Demander la permission
+    if (confirm("Démarrer le suivi GPS pour enregistrer votre parcours ?")) {
+      watchId = navigator.geolocation.watchPosition(
+        function(position) {
+          const point = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            timestamp: new Date().toISOString(),
+            accuracy: position.coords.accuracy
+          };
+          
+          trackPoints.push(point);
+          
+          // Ajouter le point à la carte
+          L.circle([point.lat, point.lng], {
+            color: '#FF6B35',
+            fillColor: '#FF6B35',
+            fillOpacity: 0.5,
+            radius: position.coords.accuracy
+          }).addTo(map);
+          
+          // Mettre à jour le statut
+          document.getElementById('locationStatus').textContent = `Suivi actif - ${trackPoints.length} points`;
+          document.getElementById('locationStatus').classList.remove('text-gray-500');
+          document.getElementById('locationStatus').classList.add('text-green-600');
+          
+          console.log("Point GPS ajouté:", point);
+        },
+        function(error) {
+          alert("Erreur lors du suivi GPS: " + error.message);
+          stopGPSTracking();
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: 5000
+        }
+      );
+      
+      alert("Suivi GPS démarré ! Votre parcours sera enregistré.");
+    }
+  }
+  
+  function stopGPSTracking() {
+    if (watchId) {
+      navigator.geolocation.clearWatch(watchId);
+      watchId = null;
+      
+      // Créer une ligne pour le tracé
+      if (trackPoints.length > 1) {
+        const latLngs = trackPoints.map(p => [p.lat, p.lng]);
+        const polyline = L.polyline(latLngs, {color: '#FF6B35'}).addTo(map);
+        map.fitBounds(polyline.getBounds());
+      }
+      
+      document.getElementById('locationStatus').textContent = `Suivi terminé - ${trackPoints.length} points enregistrés`;
+      console.log("Tracé enregistré:", trackPoints);
+    }
+  }
+</script>
+
+</body>
+</html>
