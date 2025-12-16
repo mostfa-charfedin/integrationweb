@@ -30,7 +30,7 @@
                 <!-- Main Content Area -->
                 <div class="w-[1280px] h-[1410px] left-0 top-[120px] absolute bg-gradient-to-br from-white to-slate-100 overflow-hidden">
                     
-                    <!-- Bottom Button -->
+                    <!-- Validate Button -->
                     <div class="w-[1120px] pt-14 left-[80px] top-[1187px] absolute inline-flex flex-col justify-start items-start">
                         <div class="self-stretch px-6 py-6 bg-gradient-to-b from-orange-500 to-red-500 rounded-2xl shadow-[0px_10px_25px_0px_rgba(10,31,47,0.40)] flex flex-col justify-center items-center cursor-pointer hover:from-orange-600 hover:to-red-600 transition-colors">
                             <div class="self-stretch text-center justify-center text-white text-3xl font-bold font-inter uppercase tracking-wide">Valider</div>
@@ -63,9 +63,9 @@
                                 </div>
                             </div>
                             
-                            <!-- Objective 1: Running -->
+                            <!-- Predefined Objective 1: Running -->
                             <div class="w-[1120px] min-h-44 pb-7 left-0 top-0 absolute inline-flex flex-col justify-start items-start">
-                                <div class="self-stretch min-h-36 px-9 py-14 relative bg-slate-900/75 rounded-2xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-2 outline-offset-[-2px] outline-orange-500 inline-flex justify-start items-center overflow-hidden cursor-pointer hover:bg-slate-800/75 transition-colors objective-card active">
+                                <div class="self-stretch min-h-36 px-9 py-14 relative bg-slate-900/75 rounded-2xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-2 outline-offset-[-2px] outline-orange-500 inline-flex justify-start items-center overflow-hidden cursor-pointer hover:bg-slate-800/75 transition-colors objective-card">
                                     <div class="w-1.5 h-36 left-[2px] top-[2px] absolute bg-gradient-to-b from-white to-gray-300"></div>
                                     <div class="pr-5 inline-flex flex-col justify-start items-start">
                                         <div class="justify-center text-white text-3xl font-bold font-montserrat">⏱️</div>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Objective 2: Frequency -->
+                            <!-- Predefined Objective 2: Frequency -->
                             <div class="w-[1120px] min-h-44 pb-7 left-0 top-[174px] absolute inline-flex flex-col justify-start items-start">
                                 <div class="self-stretch min-h-36 px-9 py-14 relative bg-slate-900/75 rounded-2xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-2 outline-offset-[-2px] outline-orange-500 inline-flex justify-start items-center overflow-hidden cursor-pointer hover:bg-slate-800/75 transition-colors objective-card">
                                     <div class="w-1.5 h-36 left-[2px] top-[2px] absolute bg-gradient-to-b from-white to-gray-300"></div>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Objective 3: Weight Loss -->
+                            <!-- Predefined Objective 3: Weight Loss -->
                             <div class="w-[1120px] min-h-44 pb-7 left-0 top-[348px] absolute inline-flex flex-col justify-start items-start">
                                 <div class="self-stretch min-h-36 px-9 py-14 relative bg-slate-900/75 rounded-2xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-2 outline-offset-[-2px] outline-orange-500 inline-flex justify-start items-center gap-[0px] overflow-hidden cursor-pointer hover:bg-slate-800/75 transition-colors objective-card">
                                     <div class="w-1.5 h-36 left-[2px] top-[2px] absolute bg-gradient-to-b from-white to-gray-300"></div>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Separator -->
+                            <!-- Separator Section -->
                             <div class="w-[1120px] py-10 left-0 top-[522px] absolute inline-flex flex-col justify-start items-start">
                                 <div class="self-stretch relative flex flex-col justify-start items-center">
                                     <div class="w-80 h-0.5 left-0 top-[12.50px] absolute bg-gradient-to-r from-orange-500/0 via-orange-500 to-orange-500/0"></div>
@@ -152,7 +152,7 @@
                                     <a href="profil.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
                                         <div class="font-medium">Profil Sportif</div>
                                     </a>
-                                    <a href="objectifs.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors bg-gray-100">
+                                    <a href="objectifs.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
                                         <div class="font-medium">Objectifs</div>
                                     </a>
                                     <a href="programme.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
@@ -175,46 +175,71 @@
 
     <script>
         // Interactive functionality for objective selection
+        let selectedObjective = null;
+        
         document.querySelectorAll('.objective-card').forEach(card => {
             card.addEventListener('click', function() {
-                // Remove active state from all objective cards
+                // Remove selection from all cards
                 document.querySelectorAll('.objective-card').forEach(c => {
-                    c.classList.remove('active');
+                    c.classList.remove('ring-4', 'ring-orange-400', 'ring-offset-2');
                     c.style.transform = 'scale(1)';
-                    c.style.boxShadow = '5px 5px 15px 0px rgba(10,31,47,0.10)';
                 });
                 
-                // Add active state to clicked card
-                this.classList.add('active');
+                // Add selection to clicked card
+                this.classList.add('ring-4', 'ring-orange-400', 'ring-offset-2');
                 this.style.transform = 'scale(1.02)';
-                this.style.boxShadow = '8px 8px 25px 0px rgba(255,107,53,0.40)';
+                this.style.transition = 'all 0.2s ease-in-out';
+                
+                // Store selected objective
+                selectedObjective = this.querySelector('.text-2xl').textContent;
+                
+                // Clear custom input if predefined objective is selected
+                const customInput = document.querySelector('input[type="text"]');
+                if (customInput) {
+                    customInput.value = '';
+                }
             });
         });
-
-        // Custom objective input functionality
-        const customInput = document.querySelector('input[placeholder="Mon objectif personnalisé..."]');
+        
+        // Handle custom objective input
+        const customInput = document.querySelector('input[type="text"]');
         if (customInput) {
-            customInput.addEventListener('focus', function() {
-                // Remove active state from all predefined objectives when typing custom one
-                document.querySelectorAll('.objective-card').forEach(c => {
-                    c.classList.remove('active');
-                    c.style.transform = 'scale(1)';
-                    c.style.boxShadow = '5px 5px 15px 0px rgba(10,31,47,0.10)';
-                });
+            customInput.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    // Clear predefined selections
+                    document.querySelectorAll('.objective-card').forEach(c => {
+                        c.classList.remove('ring-4', 'ring-orange-400', 'ring-offset-2');
+                        c.style.transform = 'scale(1)';
+                    });
+                    selectedObjective = this.value.trim();
+                }
             });
         }
-
-        // Validate button functionality
-        document.querySelector('.self-stretch.px-6.py-6').addEventListener('click', function() {
-            const activeObjective = document.querySelector('.objective-card.active');
-            const customObjective = customInput?.value.trim();
-            
-            if (activeObjective || customObjective) {
-                // Redirect to next page (programme.html)
+        
+        // Handle validate button
+        document.querySelector('.bg-gradient-to-b.from-orange-500.to-red-500').addEventListener('click', function() {
+            if (selectedObjective) {
+                // Here you would typically save the objective and navigate to next page
+                console.log('Selected objective:', selectedObjective);
+                // For demo purposes, show an alert
+                alert(`Objectif sélectionné: ${selectedObjective}`);
+                // Navigate to programme page
                 window.location.href = 'programme.html';
             } else {
-                alert('Veuillez sélectionner un objectif ou créer le vôtre.');
+                alert('Veuillez sélectionner un objectif ou en créer un personnalisé.');
             }
+        });
+        
+        // Add visual feedback for validate button
+        const validateBtn = document.querySelector('.bg-gradient-to-b.from-orange-500.to-red-500');
+        validateBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0px 15px 35px 0px rgba(10,31,47,0.50)';
+        });
+        
+        validateBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0px 10px 25px 0px rgba(10,31,47,0.40)';
         });
     </script>
 </body>
