@@ -147,19 +147,22 @@
                             <div class="relative group h-14 flex-1">
                                 <div class="h-full flex items-center justify-center px-6 bg-gradient-to-b from-orange-500 to-red-500 rounded-lg shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)] cursor-pointer hover:opacity-90 transition-all">
                                     <span class="text-white text-lg font-medium font-montserrat">Suivi Progression</span>
+                                    <svg class="w-4 h-4 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
                                 </div>
                                 <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                                     <div class="py-2">
-                                        <a href="profil.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                        <a href="profil.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
                                             <div class="font-medium">Profil Sportif</div>
                                         </a>
-                                        <a href="objectifs.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                        <a href="objectifs.html" class="dropdown-item block px-4 py-2 text-orange-600 bg-orange-50 transition-colors">
                                             <div class="font-medium">Objectifs</div>
                                         </a>
-                                        <a href="programme.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                        <a href="programme.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
                                             <div class="font-medium">Programme Sportif</div>
                                         </a>
-                                        <a href="workspace.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                        <a href="workspace.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
                                             <div class="font-medium">Espace de Travail</div>
                                         </a>
                                     </div>
@@ -176,6 +179,31 @@
     </div>
 
     <script>
+        // Mettre en surbrillance l'élément de menu actif
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Mettre en surbrillance l'onglet actif dans la barre de navigation
+            document.querySelectorAll('a[href]').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || 
+                    (linkHref.includes('objectifs.html') && currentPage.includes('objectifs.html'))) {
+                    link.classList.add('bg-white/20', 'shadow-lg');
+                    link.classList.remove('bg-white/10');
+                }
+            });
+            
+            // Mettre en surbrillance l'élément du menu déroulant actif
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                const itemHref = item.getAttribute('href');
+                if (itemHref === currentPage) {
+                    item.classList.add('bg-orange-50', 'text-orange-600');
+                    item.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                }
+            });
+        });
+
         // Interactive functionality for objective selection
         let selectedObjective = null;
         
