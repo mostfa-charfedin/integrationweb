@@ -5,11 +5,14 @@
   <title>Interface Sportive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind compilé (utilise tailwind.config.js) -->
+  <link rel="stylesheet" href="../dist/output.css" />
   
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     /* Supprime les marges par défaut du body et html */
@@ -383,17 +386,85 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="hidden md:flex gap-3">
-      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Accueil</a>
-      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Journal d'Activité</a>
-      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Progression</a>
-      <a class="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 font-bold shadow">
-        Récompenses
-      </a>
-      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Chat Coach</a>
+    <nav class="hidden md:flex gap-3 items-center">
+      <a href="../index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+      <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+      <!-- Dropdown Suivi Progression -->
+      <div class="relative group">
+        <button type="button" class="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 font-bold shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)] hover:opacity-90 transition flex items-center gap-2">
+          Suivi Progression
+          <i class="fas fa-chevron-down text-sm"></i>
+        </button>
+
+        <!-- Menu déroulant -->
+        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="py-2">
+            <a href="./suivi_progression.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-chart-line text-orange-500"></i>
+                <span class="font-medium">Mon Suivi</span>
+              </div>
+            </a>
+            <a href="./journal_activite.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-book text-orange-500"></i>
+                <span class="font-medium">Journal d'Activité</span>
+              </div>
+            </a>
+            <a href="./recompense.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-trophy text-orange-500"></i>
+                <span class="font-medium">Récompenses</span>
+              </div>
+            </a>
+            <a href="./chatCoach.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-comments text-orange-500"></i>
+                <span class="font-medium">Chat Coach</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
     </nav>
+
+    <!-- Menu mobile hamburger -->
+    <button id="mobileMenuButton" type="button" class="md:hidden text-white text-2xl" aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </header>
+
+<!-- Menu mobile -->
+<div id="mobileMenu" class="md:hidden hidden bg-[#0A1F2F] text-white border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+    <a href="../index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+    <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+    <div class="pt-3 mt-2 border-t border-white/10">
+      <button
+        type="button"
+        class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+        data-mobile-accordion-button
+        aria-expanded="false"
+        aria-controls="mobileSubmenuSuivi"
+      >
+        <span class="text-sm font-semibold opacity-90">Suivi Progression</span>
+        <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+      </button>
+
+      <div id="mobileSubmenuSuivi" class="hidden mt-2" data-mobile-accordion-panel>
+        <a href="./suivi_progression.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mon Suivi</a>
+        <a href="./journal_activite.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Journal d'Activité</a>
+        <a href="./recompense.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Récompenses</a>
+        <a href="./chatCoach.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Chat Coach</a>
+      </div>
+    </div>
+    <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+  </div>
+</div>
 
 <!-- ================= CONTENU ================= -->
 <div class="p-4 md:p-6 lg:p-10 bg-white overflow-y-auto h-full">
@@ -846,5 +917,69 @@
 
   </div>
 </footer>
+
+<script>
+(() => {
+  const button = document.getElementById('mobileMenuButton');
+  const menu = document.getElementById('mobileMenu');
+  if (!button || !menu) return;
+
+  const accordionButton = document.querySelector('[data-mobile-accordion-button]');
+  const accordionPanel = document.querySelector('[data-mobile-accordion-panel]');
+  const accordionIcon = document.querySelector('[data-mobile-accordion-icon]');
+
+  const closeAccordion = () => {
+    if (!accordionButton || !accordionPanel) return;
+    accordionPanel.classList.add('hidden');
+    accordionButton.setAttribute('aria-expanded', 'false');
+    accordionIcon?.classList.remove('rotate-180');
+  };
+
+  const closeMenu = () => {
+    menu.classList.add('hidden');
+    button.setAttribute('aria-expanded', 'false');
+    closeAccordion();
+  };
+
+  const toggleMenu = () => {
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+      menu.classList.remove('hidden');
+      button.setAttribute('aria-expanded', 'true');
+    } else {
+      closeMenu();
+    }
+  };
+
+  button.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  });
+
+  accordionButton?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (!accordionPanel) return;
+
+    const isHidden = accordionPanel.classList.contains('hidden');
+    if (isHidden) {
+      accordionPanel.classList.remove('hidden');
+      accordionButton.setAttribute('aria-expanded', 'true');
+      accordionIcon?.classList.add('rotate-180');
+    } else {
+      closeAccordion();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (menu.classList.contains('hidden')) return;
+    if (menu.contains(event.target) || button.contains(event.target)) return;
+    closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) closeMenu();
+  });
+})();
+</script>
 </body>
 </html>
