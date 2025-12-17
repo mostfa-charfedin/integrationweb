@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choix du niveau - EspritFit</title>
+  <!-- CDN de Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Police Inter (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Police Montserrat (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 h-screen overflow-hidden">
+
+  <!-- Conteneur principal pleine largeur -->
+  <div class="w-full h-full flex flex-col bg-white shadow-[0_10px_40px_rgba(10,31,47,0.25)] overflow-hidden">
+
+    <!-- Barre de navigation (logo + liens + icône) -->
+    <div
+      class="w-full h-20 px-20 pb-0.5 bg-gradient-to-r from-cyan-900 via-blue-950 to-slate-900 shadow-[0px_6px_30px_0px_rgba(10,31,47,0.40)] border-b-2 border-gray-300 inline-flex justify-start items-center">
+      <!-- Logo -->
+      <div class="w-44 h-14 flex items-center">
+        <img src="../images/3.png" alt="Logo EspritFit" class="h-12 w-auto" />
+      </div>
+      <!-- Liens de navigation -->
+      <div class="flex justify-start items-center gap-12 flex-1 text-white text-lg font-['Montserrat']">
+        <button class="hover:underline">Accueil</button>
+        <button class="hover:underline">Calendrier</button>
+        <button class="hover:underline">Suivi Progression</button>
+        <button
+          class="px-6 py-2 rounded-3xl bg-gradient-to-b from-orange-500 to-red-500 shadow-md font-semibold">
+          Activité Sportif
+        </button>
+      </div>
+      <!-- Icône à droite -->
+      <div class="w-5 h-5 bg-neutral-200 rounded-full"></div>
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="flex-1 flex flex-col px-6 md:px-12 pt-6 pb-4 bg-white">
+
+      <div class="w-full max-w-5xl mx-auto flex flex-col gap-6">
+        <!-- Flèche retour + titre -->
+        <div class="flex items-center gap-4">
+          <img src="../images/7.png" alt="Retour" class="w-12 h-12" />
+          <div class="flex-1 text-center">
+            <h1 class="text-slate-900 text-3xl md:text-4xl font-bold font-['Inter'] leading-tight">
+              À quel rythme veux-tu t’entrainer aujourd’hui
+            </h1>
+          </div>
+          <div class="w-10"></div>
+        </div>
+
+        <!-- Sous-texte -->
+        <div class="w-full text-center">
+          <p class="text-slate-900 text-lg md:text-xl font-semibold font-['Inter']">
+            Choisis ton niveau pour commencer ton entrainement
+          </p>
+        </div>
+      </div>
+
+      <!-- Zone centrale : sélection de niveau + rythme -->
+      <div class="flex-1 w-full max-w-5xl mx-auto flex flex-col items-center justify-center gap-12">
+
+        <!-- Carte sélection du niveau -->
+        <div class="w-full max-w-md bg-orange-50 border border-slate-700 rounded-xl p-6 shadow-sm">
+          <label for="niveau"
+            class="block mb-3 text-slate-900 text-base font-medium font-['Roboto'] tracking-wide">
+            Niveau
+          </label>
+
+          <div class="relative">
+            <select id="niveau"
+              class="w-full h-12 pl-4 pr-10 rounded-lg border border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-slate-900 text-base font-normal font-['Roboto']">
+              <option disabled selected>Choisir...</option>
+              <option>Debutant LV1</option>
+              <option>Debutant LV2</option>
+              <option>Intermediare LV1</option>
+              <option>Intermediare LV2</option>
+            </select>
+            <!-- Icône flèche -->
+            <span
+              class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-500 text-lg">▾</span>
+          </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="w-full max-w-md flex items-center justify-between gap-4">
+          <button
+            class="min-w-[120px] h-10 px-4 bg-orange-50 rounded-lg border border-slate-700 text-slate-800 text-base font-medium font-['Inter'] hover:bg-orange-100 transition">
+            annuler
+          </button>
+          <button
+            class="min-w-[120px] h-10 px-4 bg-blue-950 rounded-lg border border-orange-300 text-white text-base font-medium font-['Inter'] hover:bg-blue-900 transition">
+            Valider
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div
+      class="w-full h-28 px-20 pt-px bg-cyan-900 border-t border-gray-300 inline-flex justify-between items-center">
+      <div class="flex-1 inline-flex flex-col justify-start items-start gap-[5px]">
+        <div class="self-stretch flex flex-col justify-start items-start">
+          <div class="self-stretch justify-center text-white text-xl font-bold font-['Montserrat']">
+            ESPRITFIT
+          </div>
+        </div>
+        <div class="self-stretch opacity-90 flex flex-col justify-start items-start">
+          <div class="self-stretch justify-center text-white text-sm font-normal font-['Montserrat']">
+            Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+          </div>
+        </div>
+      </div>
+      <div class="inline-flex flex-col justify-start items-end gap-[5px]">
+        <div class="text-right justify-center text-white text-base font-normal font-['Montserrat']">
+          Campus Esprit, Tunis
+        </div>
+        <div class="text-right justify-center text-orange-500 text-base font-semibold font-['Montserrat']">
+          sport@esprit.tn
+        </div>
+        <div class="text-right justify-center text-white text-base font-semibold font-['Montserrat']">
+          71 000 000
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
