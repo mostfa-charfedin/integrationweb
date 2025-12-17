@@ -120,52 +120,29 @@
 <section class="w-full min-h-screen bg-white
               grid grid-rows-[auto_1fr] overflow-hidden">
 
-<!-- ================= NAVBAR ================= -->
-<nav class="flex flex-col md:flex-row items-center gap-4 md:gap-6 px-4 md:px-8 py-3 md:py-4
-            bg-gradient-to-b from-[#0A1F2F] to-[#1A3B5A]">
+<!-- ================= HEADER ================= -->
+<header class="bg-gradient-to-r from-[#0A1F2F] to-[#1A3B5A] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-  <img src="./assets/img/logo.png"
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img src="./assets/img/logo.png"
        class="h-16 w-16 md:h-20 md:w-20" alt="Logo">
+      <span class="font-bold text-lg">ESPRITFIT</span>
+    </div>
 
-  <div class="flex flex-wrap justify-center gap-2 nav-buttons">
-    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
-                  text-gray-200 bg-white/10
-                  hover:bg-orange-500/25 hover:text-[#FF6B35]
-                  transition hover:-translate-y-0.5 nav-button">
-      Accueil
-    </button>
-
-    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-bold text-white
-                  bg-gradient-to-br from-[#FF6B35] to-[#E74C3C]
-                  shadow-[0_4px_12px_rgba(255,107,53,0.4)] nav-button">
-      Journal d'Activité
-    </button>
-
-    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
-                  text-gray-200 bg-white/10 hover:bg-orange-500/25
-                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
-      Progression
-    </button>
-
-    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
-                  text-gray-200 bg-white/10 hover:bg-orange-500/25
-                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
-      Récompenses
-    </button>
-
-    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
-                  text-gray-200 bg-white/10 hover:bg-orange-500/25
-                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
-      Chat Coach
-    </button>
-
-    <button class="px-3 py-2 md:px-4 md:py-3 rounded-lg text-xs md:text-sm font-medium
-                  text-gray-200 bg-white/10 hover:bg-orange-500/25
-                  hover:text-[#FF6B35] transition hover:-translate-y-0.5 nav-button">
-      Paramètres
-    </button>
+    <!-- Navigation -->
+    <nav class="hidden md:flex gap-3">
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Accueil</a>
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Journal d'Activité</a>
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Progression</a>
+      <a class="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 font-bold shadow">
+        Récompenses
+      </a>
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Chat Coach</a>
+    </nav>
   </div>
-</nav>
+</header>
 
 <!-- ================= CONTENU ================= -->
 <div class="p-4 md:p-6 lg:p-10 bg-white overflow-y-auto h-full">
@@ -593,6 +570,24 @@
     initSpeechRecognition();
   });
 </script>
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#1A3B5A] text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
 
+    <div>
+      <h3 class="font-bold text-lg font-montserrat">ESPRITFIT</h3>
+      <p class="text-sm opacity-90 mt-2">
+        Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+      </p>
+    </div>
+
+    <div class="md:text-right">
+      <p>Campus Esprit, Tunis</p>
+      <p class="text-orange-400 font-semibold">sport@esprit.tn</p>
+      <p class="font-semibold">71 000 000</p>
+    </div>
+
+  </div>
+</footer>
 </body>
 </html>

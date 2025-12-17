@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <title>ESPRITFIT – Récompenses</title>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- ================= HEADER ================= -->
+<header class="bg-gradient-to-r from-[#0A1F2F] to-[#1A3B5A] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img src="./assets/img/logo.png"
+       class="h-16 w-16 md:h-20 md:w-20" alt="Logo">
+      <span class="font-bold text-lg">ESPRITFIT</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex gap-3">
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Accueil</a>
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Journal d'Activité</a>
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Progression</a>
+      <a class="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 font-bold shadow">
+        Récompenses
+      </a>
+      <a class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">Chat Coach</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+  <!-- Title -->
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-bold text-[#0A1F2F]">Mes Récompenses</h1>
+    <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-3 rounded"></div>
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+    <div class="bg-white p-6 rounded-xl shadow text-center">
+      <p class="text-sm font-bold text-gray-600">Mon Niveau</p>
+      <p class="text-2xl font-bold mt-2">Expert</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow text-center">
+      <p class="text-sm font-bold text-gray-600">Points Totaux</p>
+      <p class="text-2xl font-bold mt-2">12,500</p>
+    </div>
+
+    <div class="bg-gradient-to-r from-orange-500 to-red-500 p-6 rounded-xl shadow text-center text-white">
+      <p class="text-sm font-bold">Prochain Niveau</p>
+      <p class="text-2xl font-bold mt-2">Maître</p>
+    </div>
+
+  </div>
+
+  <!-- Badges title -->
+  <h2 class="text-xl font-bold text-center text-[#0A1F2F] mb-6">
+    Badges Débloqués
+  </h2>
+
+  <!-- Badges -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl mx-auto">
+
+    <!-- Badge unlocked -->
+    <div class="flex items-center justify-between p-5 rounded-xl shadow bg-gradient-to-r from-white to-orange-50">
+      <span class="text-2xl">🔥</span>
+      <span class="font-bold">Série de 10 jours</span>
+      <span class="text-orange-500 text-xl">✓</span>
+    </div>
+
+    <div class="flex items-center justify-between p-5 rounded-xl shadow bg-gradient-to-r from-white to-orange-50">
+      <span class="text-2xl">🏃</span>
+      <span class="font-bold">Premier Marathon</span>
+      <span class="text-orange-500 text-xl">✓</span>
+    </div>
+
+    <!-- Locked badges -->
+    <div class="flex items-center justify-between p-5 rounded-xl shadow bg-gray-200 opacity-70">
+      <span class="text-2xl">⛰️</span>
+      <span class="font-bold text-gray-500">Maître de la Montagne</span>
+      <span>🔒</span>
+    </div>
+
+    <div class="flex items-center justify-between p-5 rounded-xl shadow bg-gray-200 opacity-70">
+      <span class="text-2xl">⏱️</span>
+      <span class="font-bold text-gray-500">Record Personnel 5K</span>
+      <span>🔒</span>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#1A3B5A] text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="font-bold text-lg font-montserrat">ESPRITFIT</h3>
+      <p class="text-sm opacity-90 mt-2">
+        Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+      </p>
+    </div>
+
+    <div class="md:text-right">
+      <p>Campus Esprit, Tunis</p>
+      <p class="text-orange-400 font-semibold">sport@esprit.tn</p>
+      <p class="font-semibold">71 000 000</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
