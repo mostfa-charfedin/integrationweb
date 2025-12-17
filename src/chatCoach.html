@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Coach Sportif</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind compilé (utilise tailwind.config.js) -->
+  <link rel="stylesheet" href="../dist/output.css" />
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Supprime les marges par défaut du body et html */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Styles pour améliorer le responsive */
+    @media (max-width: 640px) {
+      .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-button {
+        flex: 1 0 auto;
+        min-width: 140px;
+        margin-bottom: 4px;
+      }
+      
+      .message-input-container {
+        flex-direction: column;
+      }
+      
+      .message-input-container input {
+        margin-bottom: 10px;
+      }
+    }
+    
+    /* Animation pour les messages */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .message {
+      animation: fadeIn 0.3s ease-out;
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 16px;
+    }
+    
+    .user-message {
+      padding-left: 0;
+      padding-right: 50px;
+    }
+    
+    .message-icon {
+      position: absolute;
+      left: 10px;
+      top: 12px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+    }
+    
+    .user-message .message-icon {
+      left: auto;
+      right: 10px;
+    }
+    
+    /* Custom scrollbar */
+    .messages-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .messages-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    .messages-container::-webkit-scrollbar-thumb {
+      background: #FF6B35;
+      border-radius: 10px;
+    }
+    
+    /* Style pour le bouton micro */
+    .microphone-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .microphone-btn.listening {
+      background: #FF6B35 !important;
+      color: white !important;
+      animation: pulse 1.5s infinite;
+    }
+    /* Animation de rotation pour l'icône */
+#dropdownIcon {
+  transition:  transform 0.2s ease;
+}
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen w-full bg-white font-sans text-[#0A1F2F]">
+
+<!-- ======================================================
+  CHAT COACH SPORTIF
+====================================================== -->
+<section class="w-full min-h-screen bg-white
+              grid grid-rows-[auto_1fr] overflow-hidden">
+
+<!-- ================= HEADER ================= -->
+<header class="bg-gradient-to-r from-[#0A1F2F] to-[#1A3B5A] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img src="./assets/img/logo.png"
+       class="h-16 w-16 md:h-20 md:w-20" alt="Logo">
+      <span class="font-bold text-lg">ESPRITFIT</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex gap-3 items-center">
+      <a href="../index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+      <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+      <!-- Dropdown Suivi Progression -->
+      <div class="relative group">
+        <button type="button" class="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 font-bold shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)] hover:opacity-90 transition flex items-center gap-2">
+          Suivi Progression
+          <i class="fas fa-chevron-down text-sm"></i>
+        </button>
+
+        <!-- Menu déroulant -->
+        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="py-2">
+            <a href="./suivi_progression.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-chart-line text-orange-500"></i>
+                <span class="font-medium">Mon Suivi</span>
+              </div>
+            </a>
+            <a href="./journal_activite.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-book text-orange-500"></i>
+                <span class="font-medium">Journal d'Activité</span>
+              </div>
+            </a>
+            <a href="./recompense.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-trophy text-orange-500"></i>
+                <span class="font-medium">Récompenses</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+    </nav>
+    
+    <!-- Menu mobile hamburger -->
+    <button id="mobileMenuButton" type="button" class="md:hidden text-white text-2xl" aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div id="mobileMenu" class="md:hidden hidden bg-[#0A1F2F] text-white border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+    <a href="../index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+    <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+    <div class="pt-3 mt-2 border-t border-white/10">
+      <button
+        type="button"
+        class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+        data-mobile-accordion-button
+        aria-expanded="false"
+        aria-controls="mobileSubmenuSuivi"
+      >
+        <span class="text-sm font-semibold opacity-90">Suivi Progression</span>
+        <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+      </button>
+
+      <div id="mobileSubmenuSuivi" class="hidden mt-2" data-mobile-accordion-panel>
+        <a href="./suivi_progression.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mon Suivi</a>
+        <a href="./journal_activite.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Journal d'Activité</a>
+        <a href="./recompense.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Récompenses</a>
+        <a href="./chatCoach.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Chat Coach</a>
+      </div>
+    </div>
+    <a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+  </div>
+</div>
+
+<!-- ================= CONTENU ================= -->
+<div class="p-4 md:p-6 lg:p-10 bg-white overflow-y-auto h-full">
+
+  <!-- TITRE -->
+  <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-8 md:mb-10 lg:mb-12 relative
+             after:content-[''] after:absolute after:-bottom-2 md:after:-bottom-3 lg:after:-bottom-4
+             after:left-1/2 after:-translate-x-1/2
+             after:w-16 md:after:w-18 lg:after:w-20 after:h-0.5 md:after:h-1 after:rounded
+             after:bg-gradient-to-r from-[#FF6B35] to-[#E74C3C]">
+    <i class="fas fa-comments mr-3"></i>Chat Coach Sportif
+  </h2>
+
+  <!-- CONTENEUR PRINCIPAL -->
+  <div class="max-w-full md:max-w-[90%] lg:max-w-[900px] mx-auto border-2 border-[#D0D8E0]
+            rounded-xl p-4 md:p-6 flex flex-col min-h-[500px] md:min-h-[550px] lg:min-h-[600px]">
+
+    <!-- HEADER -->
+    <div class="flex items-center gap-4 border-b-2 border-[#D0D8E0] pb-4 mb-6">
+      <div class="w-12 h-12 md:w-14 md:h-14 rounded-full
+                  bg-gradient-to-br from-[#FF6B35] to-[#E74C3C]
+                  flex items-center justify-center text-white text-xl md:text-2xl">
+        <i class="fas fa-dumbbell"></i>
+      </div>
+
+      <div class="flex-1">
+        <p class="font-bold text-sm md:text-base">Professeur ALAIN <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full ml-2">COACH CERTIFIÉ</span></p>
+        <p class="text-[#FF6B35] font-semibold text-xs md:text-sm flex items-center">
+          <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+          En ligne • Répond instantanément
+        </p>
+        <p class="text-xs text-gray-500 mt-1">Spécialiste en rééducation sportive • 10 ans d'expérience</p>
+      </div>
+      
+      <div class="text-right hidden md:block">
+        <button id="voiceToggleBtn" onclick="toggleCoachVoice()" 
+                class="px-3 py-2 bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A] text-white rounded-lg text-sm hover:opacity-90 transition">
+          <i class="fas fa-volume-up mr-1"></i> Voix activée
+        </button>
+      </div>
+    </div>
+
+    <!-- MESSAGES - MESSAGES STATIQUES VISIBLES -->
+    <div id="messagesContainer" class="flex-1 overflow-y-auto mb-6 flex flex-col messages-container">
+      <!-- Message 1: Utilisateur -->
+      <div class="message user-message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-[#F5F7FA] border-2 border-[#D0D8E0] rounded-xl p-4 mb-4 self-end">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">Bonjour Coach Alain ! J'ai commencé la musculation il y a 2 mois et je sens une douleur à l'épaule gauche quand je fais du développé couché.</p>
+          <button onclick="speakMessage('Bonjour Coach Alain ! J\'ai commencé la musculation il y a 2 mois et je sens une douleur à l\'épaule gauche quand je fais du développé couché.', 'user')" 
+                  class="ml-2 text-gray-400 hover:text-[#FF6B35] transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-500 mt-2 text-right">09:15 • Vous</p>
+      </div>
+
+      <!-- Message 2: Coach -->
+      <div class="message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-gradient-to-br from-[#FF6B35] to-[#E74C3C] text-white rounded-xl p-4 mb-4">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-dumbbell"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">Bonjour ! Merci pour ton message. La douleur est-elle aiguë ou plutôt une gêne ? Est-ce que ça arrive seulement pendant l'exercice ou aussi après ?</p>
+          <button onclick="speakMessage('Bonjour ! Merci pour ton message. La douleur est-elle aiguë ou plutôt une gêne ? Est-ce que ça arrive seulement pendant l\'exercice ou aussi après ?', 'coach')" 
+                  class="ml-2 text-white/70 hover:text-white transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-white/70 mt-2">09:16 • Coach ALAIN</p>
+      </div>
+
+      <!-- Message 3: Utilisateur -->
+      <div class="message user-message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-[#F5F7FA] border-2 border-[#D0D8E0] rounded-xl p-4 mb-4 self-end">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">C'est une douleur aiguë pendant l'exercice, surtout quand je descends la barre. Après, c'est plus une gêne qu'une vraie douleur.</p>
+          <button onclick="speakMessage('C\'est une douleur aiguë pendant l\'exercice, surtout quand je descends la barre. Après, c\'est plus une gêne qu\'une vraie douleur.', 'user')" 
+                  class="ml-2 text-gray-400 hover:text-[#FF6B35] transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-500 mt-2 text-right">09:17 • Vous</p>
+      </div>
+
+      <!-- Message 4: Coach -->
+      <div class="message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-gradient-to-br from-[#FF6B35] to-[#E74C3C] text-white rounded-xl p-4 mb-4">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-dumbbell"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">D'accord. Il semble que ta technique pourrait être en cause. Trop d'écartement des mains ou une descente trop profonde. Je te conseille : 1) Réduire la charge 2) Vérifier ta prise 3) Faire 2 semaines sans développé couché pour voir si la douleur disparaît.</p>
+          <button onclick="speakMessage('D\'accord. Il semble que ta technique pourrait être en cause. Trop d\'écartement des mains ou une descente trop profonde. Je te conseille : 1) Réduire la charge 2) Vérifier ta prise 3) Faire 2 semaines sans développé couché pour voir si la douleur disparaît.', 'coach')" 
+                  class="ml-2 text-white/70 hover:text-white transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-white/70 mt-2">09:18 • Coach ALAIN</p>
+      </div>
+
+      <!-- Message 5: Utilisateur -->
+      <div class="message user-message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-[#F5F7FA] border-2 border-[#D0D8E0] rounded-xl p-4 mb-4 self-end">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">Merci pour les conseils ! Je vais réduire la charge. Et pour mes autres exercices d'épaule comme les élévations latérales, je peux continuer ?</p>
+          <button onclick="speakMessage('Merci pour les conseils ! Je vais réduire la charge. Et pour mes autres exercices d\'épaule comme les élévations latérales, je peux continuer ?', 'user')" 
+                  class="ml-2 text-gray-400 hover:text-[#FF6B35] transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-500 mt-2 text-right">09:20 • Vous</p>
+      </div>
+
+      <!-- Message 6: Coach -->
+      <div class="message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-gradient-to-br from-[#FF6B35] to-[#E74C3C] text-white rounded-xl p-4 mb-4">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-dumbbell"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">Oui, tu peux continuer les élévations latérales avec des poids légers. Écoute ton corps - si tu sens la douleur, arrête immédiatement. Je t'envoie une vidéo avec les bonnes positions pour le développé couché. Pense aussi à bien t'échauffer les épaules avant chaque séance !</p>
+          <button onclick="speakMessage('Oui, tu peux continuer les élévations latérales avec des poids légers. Écoute ton corps - si tu sens la douleur, arrête immédiatement. Je t\'envoie une vidéo avec les bonnes positions pour le développé couché. Pense aussi à bien t\'échauffer les épaules avant chaque séance !', 'coach')" 
+                  class="ml-2 text-white/70 hover:text-white transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-white/70 mt-2">09:22 • Coach ALAIN</p>
+      </div>
+    </div>
+
+    <!-- INPUT AVEC MICROPHONE -->
+    <div class="mt-auto pt-4 border-t-2 border-[#D0D8E0]">
+      <div class="flex gap-3 message-input-container">
+        <div class="flex-1 relative">
+          <input type="text" 
+                 id="messageInput"
+                 placeholder="Tapez votre message ou cliquez sur le micro..."
+                 onkeypress="handleKeyPress(event)"
+                 class="w-full px-4 py-3 border-2 border-[#D0D8E0]
+                        rounded-lg focus:border-[#FF6B35] focus:ring-4
+                        focus:ring-orange-500/10 outline-none text-sm md:text-base
+                        pr-12">
+          
+          <!-- Bouton micro à l'intérieur de l'input -->
+          <button id="microphoneBtn" 
+                  onclick="toggleSpeechRecognition()"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2
+                         w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 
+                         flex items-center justify-center text-gray-600
+                         microphone-btn transition"
+                  title="Parler au micro">
+            <i class="fas fa-microphone"></i>
+          </button>
+        </div>
+        
+        <button onclick="sendMessage()"
+                class="w-12 h-12 bg-gradient-to-br from-[#FF6B35] to-[#E74C3C]
+                       text-white rounded-lg hover:opacity-90 transition
+                       flex items-center justify-center text-lg md:text-xl
+                       shadow-[0_4px_12px_rgba(255,107,53,0.4)]">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      
+      <!-- Statut d'écoute -->
+      <div id="listeningStatus" class="mt-2 text-xs text-[#FF6B35] font-medium text-center"></div>
+      
+      <!-- INDICATIONS RAPIDES -->
+      <div class="mt-4">
+        <p class="text-xs text-gray-500 mb-2 font-medium"><i class="fas fa-lightbulb mr-1"></i> Questions rapides :</p>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="document.getElementById('messageInput').value = 'Programme pour prise de masse ?';"
+                  class="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-xs transition">
+            <i class="fas fa-weight-hanging mr-1"></i> Prise de masse
+          </button>
+          <button onclick="document.getElementById('messageInput').value = 'Comment améliorer mon endurance ?';"
+                  class="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-xs transition">
+            <i class="fas fa-person-running mr-1"></i> Endurance
+          </button>
+          <button onclick="document.getElementById('messageInput').value = 'Alimentation avant l\'entraînement ?';"
+                  class="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-xs transition">
+            <i class="fas fa-apple-alt mr-1"></i> Nutrition
+          </button>
+          <button onclick="document.getElementById('messageInput').value = 'Étirements pour éviter les courbatures ?';"
+                  class="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-xs transition">
+            <i class="fas fa-spa mr-1"></i> Étirements
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  
+    
+    
+
+</section>
+
+<script>
+  // Variables globales
+  let recognition = null;
+  let isListening = false;
+  let coachVoiceEnabled = true;
+  
+  // Messages existants (pour les nouvelles réponses)
+  let existingMessages = 6; // Nous avons déjà 6 messages statiques
+  
+  // Fonction pour initialiser la reconnaissance vocale
+  function initSpeechRecognition() {
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'fr-FR';
+      
+      recognition.onstart = function() {
+        console.log("Reconnaissance vocale démarrée");
+        isListening = true;
+        document.getElementById('microphoneBtn').classList.add('listening');
+        document.getElementById('listeningStatus').textContent = "Écoute en cours... Parlez maintenant.";
+      };
+      
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('messageInput').value = transcript;
+        isListening = false;
+        document.getElementById('microphoneBtn').classList.remove('listening');
+        document.getElementById('listeningStatus').textContent = "Message transcrit ✓";
+        
+        // Envoyer automatiquement après 1 seconde
+        setTimeout(() => {
+          document.getElementById('listeningStatus').textContent = "";
+          sendMessage();
+        }, 1000);
+      };
+      
+      recognition.onerror = function(event) {
+        console.error("Erreur reconnaissance:", event.error);
+        isListening = false;
+        document.getElementById('microphoneBtn').classList.remove('listening');
+        document.getElementById('listeningStatus').textContent = "Erreur, réessayez";
+        
+        if (event.error === 'not-allowed') {
+          alert("Veuillez autoriser l'accès au microphone dans les paramètres de votre navigateur.");
+        }
+      };
+      
+      recognition.onend = function() {
+        isListening = false;
+        document.getElementById('microphoneBtn').classList.remove('listening');
+        if (!document.getElementById('listeningStatus').textContent.includes("transcrit")) {
+          document.getElementById('listeningStatus').textContent = "";
+        }
+      };
+    } else {
+      console.warn("Reconnaissance vocale non supportée");
+      document.getElementById('microphoneBtn').style.display = 'none';
+      document.getElementById('listeningStatus').textContent = "Microphone non disponible sur ce navigateur";
+    }
+  }
+  
+  // Fonction pour lire un message à haute voix
+  function speakMessage(text, sender) {
+    if ('speechSynthesis' in window) {
+      // Arrêter toute lecture en cours
+      speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'fr-FR';
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
+      
+      // Changer la voix selon l'expéditeur
+      if (sender === 'coach') {
+        utterance.rate = 0.9; // Voix plus lente pour le coach
+      }
+      
+      speechSynthesis.speak(utterance);
+    }
+  }
+  
+  // Fonction pour envoyer un nouveau message
+  function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const messageText = input.value.trim();
+    
+    if (messageText === '') return;
+    
+    const messagesContainer = document.getElementById('messagesContainer');
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    
+    // Ajouter le message utilisateur (statique)
+    const userMessageHTML = `
+      <div class="message user-message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-[#F5F7FA] border-2 border-[#D0D8E0] rounded-xl p-4 mb-4 self-end">
+        <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="flex justify-between items-start">
+          <p class="text-sm md:text-base pr-8">${messageText}</p>
+          <button onclick="speakMessage('${messageText.replace(/'/g, "\\'")}', 'user')" 
+                  class="ml-2 text-gray-400 hover:text-[#FF6B35] transition"
+                  title="Lire à haute voix">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-500 mt-2 text-right">${timeString} • Vous</p>
+      </div>
+    `;
+    
+    messagesContainer.innerHTML += userMessageHTML;
+    input.value = '';
+    
+    // Faire défiler vers le bas
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    // Simuler une réponse du coach après 2 secondes
+    setTimeout(() => {
+      const coachResponses = [
+        "Je te recommande de bien t'hydrater avant et après l'entraînement.",
+        "As-tu essayé les étirements que je t'ai montrés dans la vidéo ?",
+        "N'oublie pas que la progression prend du temps, sois patient !",
+        "Super initiative de me consulter pour cette douleur !",
+        "Pour les débutants, je conseille 3 séances par semaine maximum.",
+        "La nutrition est aussi importante que l'entraînement, tu suis un régime adapté ?",
+        "Écoute toujours ton corps, c'est ton meilleur indicateur !",
+        "Je peux te préparer un programme personnalisé si tu veux.",
+        "Les douleurs articulaires ne sont pas à prendre à la légère.",
+        "Continue comme ça, tu fais du bon travail ! 💪"
+      ];
+      
+      const randomResponse = coachResponses[Math.floor(Math.random() * coachResponses.length)];
+      const coachTime = new Date(now.getTime() + 2000).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      
+      const coachMessageHTML = `
+        <div class="message max-w-full md:max-w-[75%] lg:max-w-[70%] bg-gradient-to-br from-[#FF6B35] to-[#E74C3C] text-white rounded-xl p-4 mb-4">
+          <div class="message-icon bg-gradient-to-br from-[#0A1F2F] to-[#1A3B5A]">
+            <i class="fas fa-dumbbell"></i>
+          </div>
+          <div class="flex justify-between items-start">
+            <p class="text-sm md:text-base pr-8">${randomResponse}</p>
+            <button onclick="speakMessage('${randomResponse.replace(/'/g, "\\'")}', 'coach')" 
+                    class="ml-2 text-white/70 hover:text-white transition"
+                    title="Lire à haute voix">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
+          <p class="text-xs text-white/70 mt-2">${coachTime} • Coach ALAIN</p>
+        </div>
+      `;
+      
+      messagesContainer.innerHTML += coachMessageHTML;
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // Mettre à jour le compteur de messages
+      existingMessages += 2;
+      document.querySelector('.text-blue-700 li:nth-child(2)').innerHTML = `<span class="font-medium">Messages :</span> ${existingMessages} échangés`;
+      
+      // Lire la réponse du coach si activé
+      if (coachVoiceEnabled) {
+        speakMessage(randomResponse, 'coach');
+      }
+    }, 2000);
+  }
+  
+  // Fonction pour envoyer avec la touche Entrée
+  function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+  
+  // Fonction pour basculer la voix du coach
+  function toggleCoachVoice() {
+    coachVoiceEnabled = !coachVoiceEnabled;
+    const btn = document.getElementById('voiceToggleBtn');
+    if (coachVoiceEnabled) {
+      btn.innerHTML = '<i class="fas fa-volume-up mr-1"></i> Voix activée';
+      btn.classList.remove('bg-gray-300', 'text-gray-700');
+      btn.classList.add('bg-gradient-to-br', 'from-[#0A1F2F]', 'to-[#1A3B5A]', 'text-white');
+    } else {
+      btn.innerHTML = '<i class="fas fa-volume-mute mr-1"></i> Voix désactivée';
+      btn.classList.remove('bg-gradient-to-br', 'from-[#0A1F2F]', 'to-[#1A3B5A]', 'text-white');
+      btn.classList.add('bg-gray-300', 'text-gray-700');
+    }
+  }
+  
+  // Fonction pour démarrer/arrêter l'écoute
+  function toggleSpeechRecognition() {
+    if (!recognition) {
+      initSpeechRecognition();
+    }
+    
+    if (isListening) {
+      recognition.stop();
+      isListening = false;
+      document.getElementById('microphoneBtn').classList.remove('listening');
+      document.getElementById('listeningStatus').textContent = "";
+    } else {
+      try {
+        recognition.start();
+      } catch (e) {
+        console.error("Erreur démarrage:", e);
+      }
+    }
+  }
+  
+  // Initialiser la reconnaissance vocale au chargement
+  window.addEventListener('DOMContentLoaded', function() {
+    initSpeechRecognition();
+  });
+
+  // Fonction pour gérer le menu déroulant
+// Fonction pour gérer le menu déroulant
+function toggleDropdown() {
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const dropdownIcon = document.getElementById('dropdownIcon');
+  
+  if (dropdownMenu.classList.contains('opacity-0')) {
+    // Ouvrir le menu
+    dropdownMenu.classList.remove('opacity-0', 'invisible');
+    dropdownMenu.classList.add('opacity-100', 'visible');
+    dropdownIcon.classList.add('rotate-180');
+  } else {
+    // Fermer le menu
+    dropdownMenu. classList.add('opacity-0', 'invisible');
+    dropdownMenu.classList.remove('opacity-100', 'visible');
+    dropdownIcon.classList.remove('rotate-180');
+  }
+}
+
+// Fermer le menu si on clique ailleurs sur la page
+document.addEventListener('click', function(event) {
+  const dropdownContainer = document.getElementById('dropdownContainer');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  
+  if (dropdownContainer && ! dropdownContainer.contains(event. target)) {
+    dropdownMenu.classList.add('opacity-0', 'invisible');
+    dropdownMenu.classList.remove('opacity-100', 'visible');
+    document.getElementById('dropdownIcon').classList.remove('rotate-180');
+  }
+});
+
+// Menu mobile (hamburger)
+(() => {
+  const button = document.getElementById('mobileMenuButton');
+  const menu = document.getElementById('mobileMenu');
+  if (!button || !menu) return;
+
+  const accordionButton = document.querySelector('[data-mobile-accordion-button]');
+  const accordionPanel = document.querySelector('[data-mobile-accordion-panel]');
+  const accordionIcon = document.querySelector('[data-mobile-accordion-icon]');
+
+  const closeAccordion = () => {
+    if (!accordionButton || !accordionPanel) return;
+    accordionPanel.classList.add('hidden');
+    accordionButton.setAttribute('aria-expanded', 'false');
+    accordionIcon?.classList.remove('rotate-180');
+  };
+
+  const closeMenu = () => {
+    menu.classList.add('hidden');
+    button.setAttribute('aria-expanded', 'false');
+    closeAccordion();
+  };
+
+  const toggleMenu = () => {
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+      menu.classList.remove('hidden');
+      button.setAttribute('aria-expanded', 'true');
+    } else {
+      closeMenu();
+    }
+  };
+
+  button.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  });
+
+  accordionButton?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (!accordionPanel) return;
+
+    const isHidden = accordionPanel.classList.contains('hidden');
+    if (isHidden) {
+      accordionPanel.classList.remove('hidden');
+      accordionButton.setAttribute('aria-expanded', 'true');
+      accordionIcon?.classList.add('rotate-180');
+    } else {
+      closeAccordion();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (menu.classList.contains('hidden')) return;
+    if (menu.contains(event.target) || button.contains(event.target)) return;
+    closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) closeMenu();
+  });
+})();
+</script>
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#1A3B5A] text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="font-bold text-lg font-montserrat">ESPRITFIT</h3>
+      <p class="text-sm opacity-90 mt-2">
+        Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+      </p>
+    </div>
+
+    <div class="md:text-right">
+      <p>Campus Esprit, Tunis</p>
+      <p class="text-orange-400 font-semibold">sport@esprit.tn</p>
+      <p class="font-semibold">71 000 000</p>
+    </div>
+
+  </div>
+</footer>
+</body>
+</html>
