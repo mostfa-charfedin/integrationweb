@@ -63,27 +63,72 @@
       </div>
 
       <!-- Zone centrale : sélection de niveau + rythme -->
-      <div class="flex-1 w-full max-w-5xl mx-auto flex flex-col items-center justify-center gap-12">
+      <div class="flex-1 w-full max-w-5xl mx-auto flex flex-col items-center justify-center gap-8">
 
-        <!-- Carte sélection du niveau -->
-        <div class="w-full max-w-md bg-orange-50 border border-slate-700 rounded-xl p-6 shadow-sm">
-          <label for="niveau"
+        <!-- Sélection du niveau avec menu intégré -->
+        <div class="w-full max-w-md">
+          <label for="niveau-input"
             class="block mb-3 text-slate-900 text-base font-medium font-['Roboto'] tracking-wide">
-            Niveau
+            
           </label>
 
-          <div class="relative">
-            <select id="niveau"
-              class="w-full h-12 pl-4 pr-10 rounded-lg border border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-slate-900 text-base font-normal font-['Roboto']">
-              <option disabled selected>Choisir...</option>
-              <option>Debutant LV1</option>
-              <option>Debutant LV2</option>
-              <option>Intermediare LV1</option>
-              <option>Intermediare LV2</option>
-            </select>
+          <!-- Champ de saisie personnalisé -->
+          <div class="relative mb-2">
+            <input 
+              type="text" 
+              id="niveau-input"
+              placeholder="Niveau"
+              readonly
+              class="w-full h-12 pl-4 pr-12 rounded-lg border-2 border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-slate-900 text-base font-normal font-['Roboto'] cursor-pointer"
+              onclick="toggleDropdown()"
+            />
+            <!-- Icône X pour effacer -->
+            <button 
+              id="clear-btn"
+              onclick="clearSelection()"
+              class="absolute inset-y-0 right-10 flex items-center justify-center w-6 h-6 rounded-full bg-red-500 text-white text-xs font-bold hover:bg-red-600 transition hidden"
+            >
+              ×
+            </button>
             <!-- Icône flèche -->
             <span
-              class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-500 text-lg">▾</span>
+              id="arrow-icon"
+              class="absolute inset-y-0 right-3 flex items-center text-slate-500 text-lg cursor-pointer pointer-events-auto"
+              onclick="toggleDropdown()"
+            >▾</span>
+          </div>
+
+          <!-- Menu déroulant personnalisé - intégré dans le flux -->
+          <div 
+            id="dropdown-menu"
+            class="w-full mt-2 bg-orange-50 border border-slate-300 rounded-lg shadow-lg"
+          >
+            <div class="py-2">
+              <div 
+                class="px-4 py-3 text-slate-900 text-base font-normal font-['Roboto'] hover:bg-orange-100 cursor-pointer transition"
+                onclick="selectOption('Debutant LV1')"
+              >
+                Debutant LV1
+              </div>
+              <div 
+                class="px-4 py-3 text-slate-900 text-base font-normal font-['Roboto'] hover:bg-orange-100 cursor-pointer transition"
+                onclick="selectOption('Debutant LV2')"
+              >
+                Debutant LV2
+              </div>
+              <div 
+                class="px-4 py-3 text-slate-900 text-base font-normal font-['Roboto'] hover:bg-orange-100 cursor-pointer transition"
+                onclick="selectOption('Intermediare LV1')"
+              >
+                Intermediare LV1
+              </div>
+              <div 
+                class="px-4 py-3 text-slate-900 text-base font-normal font-['Roboto'] hover:bg-orange-100 cursor-pointer transition"
+                onclick="selectOption('Intermediare LV2')"
+              >
+                Intermediare LV2
+              </div>
+            </div>
           </div>
         </div>
 
@@ -132,6 +177,42 @@
     </div>
 
   </div>
+
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById('dropdown-menu');
+      const input = document.getElementById('niveau-input');
+      
+      if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        input.classList.add('ring-2', 'ring-red-500');
+      } else {
+        dropdown.classList.add('hidden');
+        input.classList.remove('ring-2', 'ring-red-500');
+      }
+    }
+
+    function selectOption(value) {
+      const input = document.getElementById('niveau-input');
+      const dropdown = document.getElementById('dropdown-menu');
+      const clearBtn = document.getElementById('clear-btn');
+      
+      input.value = value;
+      // Ne pas fermer le menu après sélection
+      clearBtn.classList.remove('hidden');
+    }
+
+    function clearSelection() {
+      const input = document.getElementById('niveau-input');
+      const clearBtn = document.getElementById('clear-btn');
+      
+      input.value = '';
+      clearBtn.classList.add('hidden');
+    }
+
+    // Ne pas fermer automatiquement le menu déroulant
+    // Le menu reste ouvert par défaut
+  </script>
 
 </body>
 
