@@ -12,6 +12,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        'esprit-blue': '#1A3B5A',
+                    },
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
                         'montserrat': ['Montserrat', 'sans-serif'],
@@ -22,70 +25,75 @@
         }
     </script>
 </head>
-<body>
-    <div class="w-full min-h-screen relative bg-white overflow-hidden">
-        <div class="w-full h-20 left-0 top-0 absolute bg-cyan-900 flex justify-between items-center px-6">
-            <div></div> <!-- Empty div to push the link to the right -->
+<body class="bg-gray-100">
+    <div class="w-full min-h-screen relative overflow-hidden">
+        
+        <div class="w-full h-20 left-0 top-0 absolute bg-[#1A3B5A] flex justify-between items-center px-6 z-20">
+            <div></div> 
             <a href="../index.html" class="text-white text-base font-normal font-['Poppins'] hover:text-orange-300 transition-colors flex items-center">
                 <span class="mr-1">←</span> Retour à l'accueil
             </a>
         </div>
-        <div class="w-56 h-12 left-0 top-[60px] absolute"></div>
-        <img class="w-32 h-32 left-[15px] top-[-21px] absolute" src="../src/assets/img/logo.png" />
-        <div class="w-full h-28 px-20 pt-px left-0 bottom-0 absolute bg-cyan-900 border-t border-gray-300 inline-flex justify-between items-center">
-            <div class="flex-1 inline-flex flex-col justify-start items-start gap-[5px]">
-                <div class="self-stretch flex flex-col justify-start items-start">
-                    <div class="self-stretch justify-center text-white text-xl font-bold font-['Montserrat']">ESPRITFIT</div>
-                </div>
-                <div class="self-stretch opacity-90 flex flex-col justify-start items-start">
-                    <div class="self-stretch justify-center text-white text-sm font-normal font-['Montserrat']">Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.</div>
-                </div>
-            </div>
-            <div class="inline-flex flex-col justify-start items-end gap-[5px]">
-                <div class="text-right justify-center text-white text-base font-normal font-['Montserrat']">Campus Esprit, Tunis</div>
-                <div class="text-right justify-center text-orange-500 text-base font-semibold font-['Montserrat']">sport@esprit.tn</div>
-                <div class="text-right justify-center text-white text-base font-semibold font-['Montserrat']">71 000 000</div>
-            </div>
-        </div>
-        <div class="w-full h-[calc(100vh-200px)] left-0 top-[85px] absolute bg-gradient-to-br from-orange-50 to-slate-100">
-            <div class="w-full h-full flex justify-center items-center">
-                <div class="w-[714px] h-[490.91px] bg-white rounded-2xl shadow-[0px_10px_30px_0px_rgba(0,0,0,0.25)] flex flex-col justify-center items-center p-8">
-                <div class="w-full max-w-[650px] flex flex-col items-start space-y-6">
-                    <div class="text-slate-900 text-2xl font-bold font-['Poppins']">Connexion</div>
-                    <div class="text-slate-500 text-base font-normal font-['Poppins']">Accédez à votre espace sportif EspritFit.</div>
-                    <div class="w-full space-y-6">
-                        <div class="w-full space-y-2">
-                            <div class="text-slate-900 text-base font-semibold font-['Poppins']">Email universitaire</div>
-                            <div class="w-full h-11 bg-white rounded-[10px] outline outline-1 outline-offset-[-1px] outline-gray-300 overflow-hidden flex items-center px-3">
-                                <div class="text-neutral-500 text-base font-normal font-['Inter']">prenom.nom@esprit.tn</div>
-                            </div>
-                        </div>
-                        <div class="w-full space-y-2">
-                            <div class="text-slate-900 text-base font-semibold font-['Poppins']">Mot de passe</div>
-                            <div class="w-full h-11 bg-white rounded-[10px] outline outline-1 outline-offset-[-1px] outline-gray-300 overflow-hidden flex items-center px-3">
-                                <div class="text-neutral-500 text-xs font-normal font-['Inter']">••••••••</div>
-                            </div>
-                        </div>
-                        <div class="w-full flex justify-between items-center">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-3 h-3 bg-white rounded-sm border border-neutral-500"></div>
-                                <div class="text-slate-900 text-base font-semibold font-['Poppins']">Se souvenir de moi</div>
-                            </div>
-                            <div class="text-orange-500 text-sm font-normal font-['Poppins']">Mot de passe oublié ?</div>
-                        </div>
-                        <div class="w-full h-10 bg-orange-500 rounded-[10px] flex items-center justify-center cursor-pointer hover:bg-orange-600 transition-colors">
-                            <div class="text-white text-xs font-bold font-['Inter']">Se connecter</div>
-                        </div>
+        
+        <img class="w-32 h-32 left-[15px] top-[-21px] absolute z-30" src="../src/assets/img/logo.png" alt="Logo EspritFit" />
+
+        <div class="w-full h-[calc(100vh-112px)] left-0 top-[80px] absolute bg-[url('https://images.unsplash.com/photo-1607962837359-5e7e89f86776?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center">
+            
+            <div class="absolute inset-0 bg-[#1A3B5A]/40 backdrop-blur-[2px]"></div>
+
+            <div class="relative w-full h-full flex justify-center items-center">
+                <div class="w-[90%] max-w-[500px] bg-white rounded-3xl shadow-[0px_20px_60px_rgba(0,0,0,0.4)] flex flex-col justify-center items-center p-8 md:p-10">
+                    <div class="w-full flex flex-col items-start space-y-6">
                         <div class="w-full text-center">
-                            <span class="text-slate-900 text-base font-normal font-['Poppins']">Pas encore de compte ? </span>
-                            <span class="text-orange-500 text-base font-normal font-['Poppins'] underline cursor-pointer">Créer un compte</span>
+                            <h1 class="text-slate-900 text-3xl font-bold font-['Poppins']">Connexion</h1>
+                            <p class="text-slate-500 text-sm font-normal font-['Poppins'] mt-1">Accédez à votre espace sportif EspritFit.</p>
+                        </div>
+
+                        <div class="w-full space-y-5">
+                            <div class="w-full space-y-2">
+                                <label class="text-slate-900 text-sm font-semibold font-['Poppins']">Email universitaire</label>
+                                <input type="email" placeholder="prenom.nom@esprit.tn" 
+                                    class="w-full h-12 bg-gray-50 rounded-xl border border-gray-200 px-4 focus:ring-2 focus:ring-[#1A3B5A] focus:outline-none font-['Inter']">
+                            </div>
+
+                            <div class="w-full space-y-2">
+                                <label class="text-slate-900 text-sm font-semibold font-['Poppins']">Mot de passe</label>
+                                <input type="password" placeholder="••••••••" 
+                                    class="w-full h-12 bg-gray-50 rounded-xl border border-gray-200 px-4 focus:ring-2 focus:ring-[#1A3B5A] focus:outline-none font-['Inter']">
+                            </div>
+
+                            <div class="w-full flex justify-between items-center text-sm">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 accent-[#0A1F2F]">
+                                    <span class="text-slate-600 font-['Poppins']"> Se souvenir de moi</span>
+                                </label>
+                                <a href="#" class="text-[#FF6B35] font-medium font-['Poppins'] hover:underline">Mot de passe oublié ?</a>
+                            </div>
+
+                            <button class="w-full h-12 bg-[#FF6B35] rounded-xl text-white text-base font-bold font-['Inter'] hover:bg-orange-600 shadow-md transition-all active:scale-95">
+                                Se connecter
+                            </button>
+
+                            <div class="w-full text-center pt-2">
+                                <span class="text-slate-600 text-sm font-normal font-['Poppins']">Pas encore de compte ?</span>
+                                <a href="#" class="text-[#FF6B35] text-sm font-bold font-['Poppins'] hover:underline ml-1">Créer un compte</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="right-20 top-[30px] absolute">
-            <a href="../index.html" class="text-white text-base font-normal font-['Poppins'] hover:text-orange-300 transition-colors cursor-pointer">← Retour à l'accueil</a>
+
+        <div class="w-full h-28 px-10 md:px-20 left-0 bottom-0 absolute bg-[#1A3B5A] border-t border-white/10 flex justify-between items-center z-20">
+            <div class="flex-1 flex flex-col">
+                <div class="text-white text-xl font-bold font-['Montserrat'] tracking-wider">ESPRITFIT</div>
+                <div class="text-white/70 text-xs font-normal font-['Montserrat']">Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.</div>
+            </div>
+            <div class="flex flex-col text-right">
+                <div class="text-white text-sm font-normal font-['Montserrat']">Campus Esprit, Tunis</div>
+                <div class="text-orange-400 text-sm font-semibold font-['Montserrat']">sport@esprit.tn</div>
+                <div class="text-white/80 text-sm font-semibold font-['Montserrat']">71 000 000</div>
+            </div>
         </div>
     </div>
 </body>
