@@ -19,7 +19,7 @@
         Accueil
       </a>
 
-      <!-- Lien ACTIF -->
+
       <a
         href="calendrier.html"
         class="text-orange-400 border-b-2 border-orange-400 pb-1"
@@ -107,23 +107,22 @@
   </div>
 </footer>
 
-<!-- SCRIPT CALENDRIER -->
+
 <script>
   const grid = document.getElementById("calendar-grid");
   const monthLabel = document.querySelector("h1");
   const prevBtn = document.querySelectorAll("button")[0];
   const nextBtn = document.querySelectorAll("button")[1];
 
-  // ✅ TOUS les mois (obligatoire)
+  
   const monthNames = [
     "Janvier","Février","Mars","Avril","Mai","Juin",
     "Juillet","Août","Septembre","Octobre","Novembre","Décembre"
   ];
 
-  // 👉 Date FIXÉE pour la démonstration
   const demoToday = new Date(2025, 11, 20); 
 
-  // 👉 Mois initial
+
   let currentDate = new Date(2025, 11, 1);
 
   // Activités UNIQUEMENT en décembre
