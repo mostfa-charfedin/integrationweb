@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESPRITFIT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-sans text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-[#1a3b5a]">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <img src="../assets/images/logo.png" alt="logo" class="h-14 w-auto" />
+
+    <nav class="hidden md:flex space-x-6 text-white text-sm">
+      
+      <a
+        href="acceuil.html"
+        class="text-orange-400 border-b-2 border-orange-400 pb-1"
+      >
+        Accueil
+      </a>
+
+      <a href="calendrier.html" class="hover:text-orange-400 transition">
+        Calendrier
+      </a>
+
+      <a href="#" class="hover:text-orange-400 transition">
+        Mes activités
+      </a>
+    </nav>
+
+    <a
+      href="#"
+      class="bg-gradient-to-r from-orange-500 to-red-500
+             text-white px-5 py-2 rounded-lg text-sm font-semibold
+             shadow-md hover:scale-105 transition"
+    >
+      Connexion
+    </a>
+  </div>
+</header>
+
+<br><br>
+<!-- BANNIÈRE PRINCIPALE -->
+<section class="bg-[#1f4460] text-white text-center px-6 py-16">
+  <h1 class="text-3xl md:text-4xl font-bold mb-5 max-w-4xl mx-auto">
+    Un calendrier interactif pour vos activités sportives
+  </h1>
+
+  <p class="text-base opacity-90 max-w-2xl mx-auto mb-10">
+    Découvrez toutes les activités disponibles à l’université et planifiez vos séances en toute simplicité.
+  </p>
+
+  <div class="flex flex-col md:flex-row justify-center gap-10 mb-10">
+    <div>
+      <p class="text-3xl font-bold text-orange-400">25+</p>
+      <p class="text-sm opacity-80">Sports disponibles</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-orange-400">150+</p>
+      <p class="text-sm opacity-80">Créneaux / semaine</p>
+    </div>
+    <div>
+      <p class="text-3xl font-bold text-orange-400">500+</p>
+      <p class="text-sm opacity-80">Étudiants actifs</p>
+    </div>
+  </div>
+
+  <a href="calendrier.html"
+     class="inline-block bg-white text-[#1a3b5a]
+            px-7 py-3 rounded-lg text-sm font-semibold
+            hover:bg-orange-400 hover:text-white transition">
+    Consulter le calendrier
+  </a>
+</section>
+
+
+<!-- FEATURES -->
+<section class="py-20 px-6 text-center">
+  <h2 class="text-3xl font-bold mb-4">
+    Pourquoi choisir notre plateforme ?
+  </h2>
+
+  <p class="text-gray-500 mb-16">
+    Tout ce dont vous avez besoin pour gérer vos activités sportives
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+
+    <!-- Card 1 -->
+    <div class="bg-[#f6f2f0] border-2 border-gray-200 rounded-2xl
+                px-10 py-12 flex flex-col items-center text-center">
+      <img src="../assets/icons/img1.png" alt="icone" class="h-10 mb-6">
+      <h3 class="font-bold text-lg mb-4">Découvrir un sport</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Accédez à une page dédiée avec les règles,<br>
+        les lieux et les horaires des sports proposés.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-[#f6f2f0] border-2 border-gray-200 rounded-2xl
+                px-10 py-12 flex flex-col items-center text-center">
+      <img src="../assets/icons/img2.png" alt="icone" class="h-10 mb-6">
+      <h3 class="font-bold text-lg mb-4">Réservation simplifiée</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Inscrivez-vous à une activité directement<br>
+        depuis le calendrier, sans remplir de formulaire.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-[#f6f2f0] border-2 border-gray-200 rounded-2xl
+                px-10 py-12 flex flex-col items-center text-center">
+      <img src="../assets/icons/img3.png" alt="icone" class="h-10 mb-6">
+      <h3 class="font-bold text-lg mb-4">Calendrier centralisé</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Consultez toutes les activités disponibles<br>
+        avec un affichage clair et lisible.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-[#f6f2f0] border-2 border-gray-200 rounded-2xl
+                px-10 py-12 flex flex-col items-center text-center">
+      <img src="../assets/icons/Charts.png" alt="icone" class="h-10 mb-6">
+      <h3 class="font-bold text-lg mb-4">Suivi de participation</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Suivez vos statistiques et vos progrès tout<br>
+        au long de l'année universitaire.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#1a3b5a] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between gap-6 text-sm">
+    <div>
+      <h4 class="font-bold mb-2">ESPRITFIT</h4>
+      <p class="opacity-90 max-w-sm">
+        Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+      </p>
+    </div>
+
+    <div class="md:text-right">
+      <p>Campus Esprit, Tunis</p>
+      <a href="mailto:sport@esprit.tn" class="text-orange-400 hover:underline">
+        sport@esprit.tn
+      </a>
+      <p>71 000 000</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

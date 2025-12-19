@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESPRITFIT – Filtrer les activités</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-sans text-gray-800 bg-[#f4f4f4]">
+
+<!-- HEADER -->
+<header class="bg-[#1a3b5a]">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <img src="../assets/images/logo.png" alt="logo" class="h-14" />
+
+    <nav class="hidden md:flex space-x-6 text-white text-sm">
+      <a href="acceuil.html" class="hover:text-orange-400 transition">Accueil</a>
+      <a href="calendrier.html" class="hover:text-orange-400 transition">Calendrier</a>
+      <a href="#" class="hover:text-orange-400 transition">Mes activités</a>
+    </nav>
+
+    <a
+      href="#"
+      class="bg-gradient-to-r from-orange-500 to-red-500
+             text-white px-5 py-2 rounded-lg text-sm font-semibold
+             shadow-md hover:scale-105 transition"
+    >
+      Connexion
+    </a>
+  </div>
+</header>
+
+
+<!-- CONTENU PRINCIPAL -->
+<main class="min-h-screen py-20 bg-white">
+  <section class="max-w-5xl mx-auto px-6">
+
+    <!-- Titre -->
+    <div class="mb-14 text-center">
+      <h1 class="text-2xl font-bold text-[#1a3b5a] mb-3">
+        Filtrer les activités par sport
+      </h1>
+      <p class="text-sm text-gray-600 max-w-xl mx-auto">
+        Sélectionnez un ou plusieurs sports pour afficher les activités correspondantes dans le calendrier.
+      </p>
+    </div>
+
+    <form class="space-y-12">
+
+      <!-- Sports collectifs -->
+      <section class="border border-gray-200 rounded-lg px-6 py-6">
+        <h2 class="text-sm font-semibold text-orange-500 mb-4">
+          Sports collectifs
+        </h2>
+        <hr><br>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-12 text-sm text-gray-700">
+          <label class="flex items-center gap-2"><input type="checkbox"> Football</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Basketball</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Handball</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Volley-ball</label>
+        </div>
+      </section>
+
+      <!-- Sports aquatiques -->
+      <section class="border border-gray-200 rounded-lg px-6 py-6">
+        <h2 class="text-sm font-semibold text-orange-500 mb-4">
+          Sports aquatiques
+        </h2>
+        <hr><br>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-12 text-sm text-gray-700">
+          <label class="flex items-center gap-2"><input type="checkbox"> Natation</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Water-polo</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Aqua-gym</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Plongée</label>
+        </div>
+      </section>
+
+      <!-- Fitness -->
+      <section class="border border-gray-200 rounded-lg px-6 py-6">
+        <h2 class="text-sm font-semibold text-orange-500 mb-4">
+          Fitness &amp; Bien-être
+        </h2>
+        <hr><br>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-12 text-sm text-gray-700">
+          <label class="flex items-center gap-2"><input type="checkbox"> Yoga</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Pilates</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Fitness</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Stretching</label>
+        </div>
+      </section>
+
+      <!-- Sports individuels -->
+      <section class="border border-gray-200 rounded-lg px-6 py-6">
+        <h2 class="text-sm font-semibold text-orange-500 mb-4">
+          Sports individuels
+        </h2>
+        <hr><br>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-12 text-sm text-gray-700">
+          <label class="flex items-center gap-2"><input type="checkbox"> Tennis</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Course à pied</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Musculation</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Escalade</label>
+        </div>
+      </section>
+
+      <!-- Boutons -->
+      <div class="flex justify-center gap-6 pt-10">
+        <a
+          href="calendrier.html"
+          class="bg-orange-500 text-white px-8 py-2 rounded-lg text-sm font-semibold hover:bg-orange-600 transition"
+        >
+          Appliquer les filtres
+        </a>
+
+        <button
+          type="button"
+          class="border-2 border-[#1a3b5a] text-[#1a3b5a]
+                 px-8 py-2 rounded-lg text-sm font-semibold
+                 hover:bg-[#1a3b5a] hover:text-white transition"
+        >
+          Voir tous les sports
+        </button>
+      </div>
+
+    </form>
+  </section>
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#1a3b5a] text-white">
+  <div class="max-w-7xl mx-auto px-6 py-8 flex justify-between text-sm">
+    <div>
+      <h4 class="font-bold mb-2">ESPRITFIT</h4>
+      <p class="opacity-90 max-w-sm">
+        Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+      </p>
+    </div>
+
+    <div class="text-right">
+      <p>Campus Esprit, Tunis</p>
+      <p class="text-orange-400">sport@esprit.tn</p>
+      <p>71 000 000</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
