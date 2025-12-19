@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESPRITFIT – Filtrer les activités</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- [web:56] -->
+  </head>
+
+  <body class="font-sans text-gray-800">
+    <!-- HEADER -->
+    <header class="bg-[#1a3b5a] px-20 py-4 flex items-center justify-between">
+      <div class="text-white font-bold text-xl">
+        <img src="../assets/images/logo.png" alt="logo" class="h-16 w-auto" />
+      </div>
+
+      <nav class="space-x-8 text-white">
+        <a href="index.html" class="hover:text-orange-400 transition">Accueil</a>
+        <a href="calendrier.html" class="hover:text-orange-400 transition">Calendrier</a>
+        <a href="#" class="hover:text-orange-400 transition">Mes activités</a>
+      </nav>
+
+      <a
+        href="#"
+        class="bg-gradient-to-r from-orange-500 to-red-500
+               text-white px-6 py-2 rounded-lg font-semibold
+               shadow-lg hover:scale-105 hover:shadow-xl
+               transition duration-300"
+      >
+        Connexion
+      </a>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="bg-[#f4f4f4] min-h-screen py-16">
+      <section class="max-w-5xl mx-auto bg-white rounded-xl shadow-sm px-10 py-10">
+        <!-- Titre + description -->
+        <div class="mb-10 text-center">
+          <h1 class="text-2xl font-bold text-[#1a3b5a] mb-3">
+            Filtrer les activités par sport
+          </h1>
+          <p class="text-sm text-gray-600">
+            Sélectionnez un ou plusieurs sports pour afficher les activités correspondantes dans le calendrier.
+          </p>
+        </div>
+
+        <!-- Formulaire de filtres -->
+        <form class="space-y-8" aria-label="Formulaire de filtrage des sports">
+          <!-- Sports collectifs -->
+          <section class="border border-gray-200 rounded-xl px-6 py-5 bg-[#fafafa]">
+            <h2 class="text-sm font-semibold text-orange-500 mb-3">
+              Sports collectifs
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="football"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Football</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="basketball"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Basketball</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="handball"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Handball</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="volley"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Volley-ball</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Sports aquatiques -->
+          <section class="border border-gray-200 rounded-xl px-6 py-5 bg-[#fafafa]">
+            <h2 class="text-sm font-semibold text-orange-500 mb-3">
+              Sports aquatiques
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="natation"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Natation</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="waterpolo"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Water-polo</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="aqua-gym"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Aqua-gym</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="plongee"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Plongée</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Fitness & Bien-être -->
+          <section class="border border-gray-200 rounded-xl px-6 py-5 bg-[#fafafa]">
+            <h2 class="text-sm font-semibold text-orange-500 mb-3">
+              Fitness &amp; Bien-être
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="yoga"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Yoga</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="pilates"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Pilates</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="fitness"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Fitness</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="stretching"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Stretching</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Sports individuels -->
+          <section class="border border-gray-200 rounded-xl px-6 py-5 bg-[#fafafa]">
+            <h2 class="text-sm font-semibold text-orange-500 mb-3">
+              Sports individuels
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="tennis"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Tennis</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="course"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Course à pied</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="musculation"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Musculation</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  name="sport"
+                  value="escalade"
+                  class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                />
+                <span>Escalade</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Boutons d'action -->
+          <div class="mt-6 flex flex-wrap gap-4 justify-start">
+           <a
+  href="calendrier.html"
+  class="inline-block bg-orange-500 text-white px-6 py-2 rounded-lg text-sm font-semibold shadow-sm hover:bg-orange-600 transition"
+>
+  Appliquer les filtres
+</a>
+
+            <button
+              type="button"
+              class="border border-gray-300 text-sm font-semibold text-gray-700 px-6 py-2 rounded-lg bg-white hover:bg-gray-50 transition"
+            >
+              Voir tous les sports
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1a3b5a] text-white px-20 py-10 flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <h4 class="font-bold text-lg">ESPRITFIT</h4>
+        <p class="opacity-90 max-w-sm">
+          Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+        </p>
+      </div>
+
+      <div class="text-right">
+        <p>Campus Esprit, Tunis</p>
+        <a href="mailto:sport@esprit.tn" class="text-orange-400 hover:underline">
+          sport@esprit.tn
+        </a>
+        <p>71 000 000</p>
+      </div>
+    </footer>
+  </body>
+</html>
