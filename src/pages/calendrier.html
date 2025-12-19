@@ -12,22 +12,37 @@
 <!-- HEADER -->
 <header class="bg-[#1a3b5a]">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <img src="../assets/images/logo.png" alt="logo" class="h-14" />
+    <img src="../assets/images/logo.png" alt="logo" class="h-14 w-auto" />
 
     <nav class="hidden md:flex space-x-6 text-white text-sm">
-      <a href="index.html" class="hover:text-orange-400">Accueil</a>
-      <a href="calendrier.html" class="text-orange-400 border-b-2 border-orange-400 pb-1">
+      <a href="index.html" class="hover:text-orange-400 transition">
+        Accueil
+      </a>
+
+      <!-- Lien ACTIF -->
+      <a
+        href="calendrier.html"
+        class="text-orange-400 border-b-2 border-orange-400 pb-1"
+      >
         Calendrier
       </a>
-      <a href="#" class="hover:text-orange-400">Mes activités</a>
+
+      <a href="#" class="hover:text-orange-400 transition">
+        Mes activités
+      </a>
     </nav>
 
-    <a class="bg-gradient-to-r from-orange-500 to-red-500
-              text-white px-5 py-2 rounded-lg text-sm font-semibold">
+    <a
+      href="#"
+      class="bg-gradient-to-r from-orange-500 to-red-500
+             text-white px-5 py-2 rounded-lg text-sm font-semibold
+             shadow-md hover:scale-105 transition"
+    >
       Connexion
     </a>
   </div>
 </header>
+
 
 <!-- TITRE CALENDRIER -->
 <section class="py-16">
