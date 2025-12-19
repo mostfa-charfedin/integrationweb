@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EspritFit - Espace de Travail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-inter">
+
+    <div class="w-full min-h-screen flex flex-col bg-gradient-to-br from-orange-50 to-slate-100 relative overflow-x-hidden">
+        
+        <div class="w-full h-24 sticky top-0 left-0 bg-gradient-to-r from-cyan-900 to-slate-900 shadow-lg border-b-2 border-gray-300 flex items-center z-40">
+            <div class="w-full max-w-6xl mx-auto px-8 flex items-center">
+                <a href="#" class="flex items-center justify-center w-20 h-20 transition-transform duration-200 hover:scale-105 mr-12">
+                    <img class="h-full w-auto object-contain" src="../src/assets/img/logo.png" alt="EspritFit Logo" />
+                </a>                     
+                <div class="flex-1 flex items-center justify-between h-full gap-8">
+                    <a href="profil.html" class="h-12 flex-1 flex items-center justify-center bg-white/10 rounded-lg hover:opacity-90 transition-all">
+                        <span class="text-white text-base font-medium font-montserrat">Accueil</span>
+                    </a>
+                    <a href="calendrier.html" class="h-12 flex-1 flex items-center justify-center bg-white/10 rounded-lg hover:opacity-90 transition-all">
+                        <span class="text-white text-base font-medium font-montserrat">Calendrier</span>
+                    </a>
+                    <div class="relative group h-12 flex-1">
+                        <div class="h-full flex items-center justify-center px-6 bg-gradient-to-b from-orange-500 to-red-500 rounded-lg shadow-md cursor-pointer hover:opacity-90 transition-all">
+                            <span class="text-white text-base font-medium font-montserrat">Suivi Progression</span>
+                            <svg class="w-4 h-4 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="absolute top-full left-0 mt-2 w-60 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
+                            <a href="profil.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Profil Sportif</a>
+                            <a href="objectifs.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Objectifs</a>
+                            <a href="programme.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 font-medium">Programme Sportif</a>
+                            <a href="workspace.html" class="block px-4 py-2 text-orange-500 relative font-medium">Espace de Travail <div class="absolute left-0 top-0 h-full w-1 bg-orange-500 rounded-r"></div></a>
+                        </div>
+                    </div>
+                    <a href="activites.html" class="h-12 flex-1 flex items-center justify-center bg-white/10 rounded-lg hover:opacity-90 transition-all">
+                        <span class="text-white text-base font-medium font-montserrat">Activité Sportive</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex-1 w-full max-w-6xl mx-auto pt-16 pb-20 flex flex-col items-center">
+            <div class="pb-0 relative border-b-[3px] border-gray-300 flex flex-col items-center">
+                <div class="inline-flex justify-center items-center gap-4 pb-6">
+                    <div class="text-4xl font-bold font-playfair">🚀</div>
+                    <div class="text-slate-900 text-5xl font-bold font-inter [text-shadow:_2px_2px_4px_rgb(10_31_47_/_0.10)]">Espace de Travail</div>
+                </div>
+                <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-t-sm mb-[-3px] relative z-10"></div>
+            </div>
+
+            <div class="w-full max-w-4xl mt-20 px-6 py-12 opacity-60 bg-white rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-center items-center">
+                <div class="text-center text-neutral-400 text-xl font-bold font-inter italic">C'est Validé</div>
+            </div>
+        </main>
+
+        <footer class="w-full h-32 bg-[#1A3B5A] border-t border-gray-300 px-20 flex justify-between items-center text-white shrink-0">
+            <div class="flex flex-col gap-1">
+                <div class="text-xl font-bold font-montserrat">ESPRITFIT</div>
+                <div class="opacity-80 text-sm font-montserrat max-w-md">Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.</div>
+            </div>
+            <div class="flex flex-col items-end text-sm font-montserrat">
+                <div>Campus Esprit, Tunis</div>
+                <div class="text-orange-500 font-semibold">sport@esprit.tn</div>
+                <div class="font-semibold">71 000 000</div>
+            </div>
+        </footer>
+
+        <div id="notificationModal" class="fixed inset-0 bg-slate-900/95 flex justify-center items-center z-50 transition-all duration-300">
+            <div class="w-[520px] bg-gradient-to-br from-white to-slate-100 rounded-[20px] p-10 shadow-2xl relative border border-gray-300">
+                <div id="closeModal" class="absolute top-6 right-6 cursor-pointer text-red-500 text-xl font-bold hover:scale-110 transition-transform">✖</div>
+                
+                <div class="flex flex-col items-center">
+                    <div class="text-5xl mb-4">🔔</div>
+                    <div class="text-cyan-900 text-base font-bold font-montserrat uppercase tracking-widest mb-1">Rappel</div>
+                    <div class="text-slate-900 text-4xl font-bold font-inter mb-8">Pause études !</div>
+                    
+                    <div class="text-center mb-10">
+                        <span class="text-slate-900 text-lg font-semibold font-montserrat">C'est l'heure de ta </span>
+                        <span class="text-orange-500 text-lg font-extrabold font-montserrat">séance de yoga (18h00)</span>
+                        <span class="text-slate-900 text-lg font-semibold font-montserrat">.</span>
+                        <div class="text-slate-900 text-lg font-semibold font-montserrat mt-2">Tes écouteurs sont prêts ?</div>
+                    </div>
+
+                    <div id="goButton" class="w-full h-14 bg-gradient-to-b from-orange-500 to-red-500 rounded-xl shadow-lg flex justify-center items-center cursor-pointer hover:opacity-90 mb-4">
+                        <div class="text-white text-xl font-bold font-inter">J'y vais !</div>
+                    </div>
+                    
+                    <div id="snoozeButton" class="w-full h-14 bg-white border-2 border-gray-300 rounded-xl flex justify-center items-center cursor-pointer hover:bg-gray-50">
+                        <div class="text-slate-900 text-lg font-bold font-inter">Reporter 15 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('notificationModal');
+        const closeModal = () => { modal.style.opacity = '0'; modal.style.visibility = 'hidden'; };
+        
+        document.getElementById('closeModal').onclick = closeModal;
+        document.getElementById('goButton').onclick = () => { alert('Bonne séance !'); closeModal(); };
+        document.getElementById('snoozeButton').onclick = () => { alert('Reporté de 15 min'); closeModal(); };
+    </script>
+</body>
+</html>

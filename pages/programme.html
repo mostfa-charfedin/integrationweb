@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EspritFit - Programme Sportif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="w-full h-[1650px] relative bg-white overflow-hidden">
+        <div class="w-full h-[1650px] pb-12 left-0 top-0 absolute inline-flex flex-col justify-start items-start">
+            <div class="w-full h-[1650px] relative bg-gradient-to-br from-orange-50 to-slate-100">
+                
+                <!-- Main Content Area -->
+                <div class="w-full h-[1410px] left-0 top-[120px] absolute bg-gradient-to-br from-white to-slate-100 overflow-hidden">
+                    
+                    <!-- Bottom Button -->
+                    <div class="w-full pt-14 px-20 top-[1187px] absolute inline-flex flex-col justify-start items-start">
+                        <div class="self-stretch px-6 py-6 bg-gradient-to-b from-orange-500 to-red-500 rounded-2xl shadow-[0px_10px_25px_0px_rgba(255,107,53,0.50)] flex flex-col justify-center items-center cursor-pointer hover:from-orange-600 hover:to-red-600 transition-colors">
+                            <div class="self-stretch text-center justify-center text-white text-3xl font-bold font-inter uppercase tracking-wide">Valider et Activer les Rappels</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Header Section -->
+                    <div class="w-full pb-5 px-20 top-[80px] absolute inline-flex flex-col justify-start items-start">
+                        <div class="self-stretch pb-8 relative border-b-[3px] border-gray-300 flex flex-col justify-start items-start">
+                            <div class="self-stretch inline-flex justify-center items-center gap-5">
+                                <div class="inline-flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-orange-500 text-5xl font-bold font-playfair [text-shadow:_2px_2px_4px_rgb(10_31_47_/_0.10)]">📅</div>
+                                </div>
+                                <div class="text-center justify-center text-slate-900 text-6xl font-bold font-inter [text-shadow:_2px_2px_4px_rgb(10_31_47_/_0.10)]">Ton Programme Sportif</div>
+                            </div>
+                            <div class="w-32 h-1.5 left-1/2 transform -translate-x-1/2 top-[95px] absolute bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Schedule Grid Section -->
+                    <div class="w-full h-[899px] pb-5 top-[248px] absolute flex justify-center items-start">
+                        <div class="w-[1164px] h-[879px] relative overflow-hidden">
+                            
+                            <!-- Day Headers Row -->
+                            <!-- Monday -->
+                            <div class="w-52 h-24 py-3.5 left-0 top-[30px] absolute bg-gradient-to-b from-gray-300 to-white rounded-xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] inline-flex justify-center items-center overflow-hidden">
+                                <div class="text-center justify-center text-cyan-900 text-2xl font-black font-montserrat">LUN</div>
+                                <div class="w-52 h-1 left-0 top-[86px] absolute bg-gradient-to-r from-orange-500 to-red-500"></div>
+                            </div>
+                            
+                            <!-- Tuesday -->
+                            <div class="w-52 h-24 py-3.5 left-[228px] top-[30px] absolute bg-gradient-to-b from-gray-300 to-white rounded-xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] inline-flex justify-center items-center overflow-hidden">
+                                <div class="text-center justify-center text-cyan-900 text-2xl font-black font-montserrat">MAR</div>
+                                <div class="w-52 h-1 left-0 top-[86px] absolute bg-gradient-to-r from-orange-500 to-red-500"></div>
+                            </div>
+                            
+                            <!-- Wednesday -->
+                            <div class="w-52 h-24 py-3.5 left-[456px] top-[30px] absolute bg-gradient-to-b from-gray-300 to-white rounded-xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] inline-flex justify-center items-center overflow-hidden">
+                                <div class="text-center justify-center text-cyan-900 text-2xl font-black font-montserrat">MER</div>
+                                <div class="w-52 h-1 left-0 top-[86px] absolute bg-gradient-to-r from-orange-500 to-red-500"></div>
+                            </div>
+                            
+                            <!-- Saturday -->
+                            <div class="w-52 h-24 py-3.5 left-[684px] top-[30px] absolute bg-gradient-to-b from-gray-300 to-white rounded-xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] inline-flex justify-center items-center overflow-hidden">
+                                <div class="text-center justify-center text-cyan-900 text-2xl font-black font-montserrat">SAM</div>
+                                <div class="w-52 h-1 left-0 top-[86px] absolute bg-gradient-to-r from-orange-500 to-red-500"></div>
+                            </div>
+                            
+                            <!-- Sunday -->
+                            <div class="w-52 h-24 py-3.5 left-[912px] top-[30px] absolute bg-gradient-to-b from-gray-300 to-white rounded-xl shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] inline-flex justify-center items-center overflow-hidden">
+                                <div class="text-center justify-center text-cyan-900 text-2xl font-black font-montserrat">DIM</div>
+                                <div class="w-52 h-1 left-0 top-[86px] absolute bg-gradient-to-r from-orange-500 to-red-500"></div>
+                            </div>
+                            
+                            <!-- Week 1 Row -->
+                            <!-- Monday - Running Exercise -->
+                            <div class="w-52 h-32 p-3 left-0 top-[161px] absolute bg-gradient-to-br from-cyan-900 to-slate-900 rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-orange-500 inline-flex flex-col justify-center items-center gap-[5px] overflow-hidden">
+                                <div class="min-w-40 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-white text-lg font-bold font-montserrat">🏃‍♀️ Course (30min)</div>
+                                </div>
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-neutral-200 text-sm font-medium font-montserrat">Objectif: 5km</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tuesday - Completed -->
+                            <div class="w-52 h-32 left-[228px] top-[161px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 overflow-hidden">
+                                <div class="w-11 h-11 p-1 left-[172px] top-[-7px] absolute bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl shadow-[0px_5px_15px_0px_rgba(255,107,53,0.50)] outline outline-4 outline-offset-[-4px] outline-white inline-flex justify-center items-center">
+                                    <div class="text-center justify-center text-white text-lg font-bold font-montserrat">✓</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Wednesday - In Progress -->
+                            <div class="w-52 h-32 left-[456px] top-[161px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 overflow-hidden">
+                                <div class="w-11 h-11 p-1 left-[172px] top-[-7px] absolute bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl shadow-[0px_5px_15px_0px_rgba(255,107,53,0.50)] outline outline-4 outline-offset-[-4px] outline-white inline-flex justify-center items-center">
+                                    <div class="w-5 text-center justify-center text-white text-lg font-bold font-montserrat">↻</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Saturday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[684px] top-[161px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sunday - Add Button -->
+                            <div class="w-52 h-32 p-[3px] left-[912px] top-[161px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="self-stretch flex-1 px-1.5 py-px bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex flex-col justify-center items-center">
+                                    <div class="self-stretch text-center justify-center text-white text-4xl font-normal font-inter leading-10">✚</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Week 2 Row -->
+                            <!-- Monday - Add Button -->
+                            <div class="w-52 h-32 p-[3px] left-0 top-[348px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="self-stretch flex-1 px-1.5 py-px bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex flex-col justify-center items-center">
+                                    <div class="self-stretch text-center justify-center text-white text-4xl font-normal font-inter leading-10">✚</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tuesday - Completed -->
+                            <div class="w-52 h-32 left-[228px] top-[348px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 overflow-hidden">
+                                <div class="w-11 h-11 p-1 left-[172px] top-[-7px] absolute bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl shadow-[0px_5px_15px_0px_rgba(255,107,53,0.50)] outline outline-4 outline-offset-[-4px] outline-white inline-flex justify-center items-center">
+                                    <div class="text-center justify-center text-white text-lg font-bold font-montserrat">✓</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Wednesday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[456px] top-[348px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Saturday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[684px] top-[348px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sunday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[912px] top-[348px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Week 3 Row -->
+                            <!-- Monday - Add Button -->
+                            <div class="w-52 h-32 p-[3px] left-0 top-[515px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="self-stretch flex-1 px-1.5 py-px bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex flex-col justify-center items-center">
+                                    <div class="self-stretch text-center justify-center text-white text-4xl font-normal font-inter leading-10">✚</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tuesday - Completed -->
+                            <div class="w-52 h-32 left-[228px] top-[515px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 overflow-hidden">
+                                <div class="w-11 h-11 p-1 left-[172px] top-[-7px] absolute bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl shadow-[0px_5px_15px_0px_rgba(255,107,53,0.50)] outline outline-4 outline-offset-[-4px] outline-white inline-flex justify-center items-center">
+                                    <div class="text-center justify-center text-white text-lg font-bold font-montserrat">✓</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Wednesday - Yoga Exercise -->
+                            <div class="w-52 h-32 p-3 left-[456px] top-[515px] absolute bg-gradient-to-br from-cyan-900 to-slate-900 rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-orange-500 inline-flex flex-col justify-center items-center gap-[5px] overflow-hidden">
+                                <div class="pb-px flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-white text-lg font-bold font-montserrat">🧘 Yoga (1h)</div>
+                                </div>
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-neutral-200 text-sm font-medium font-montserrat">Détente</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Saturday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[684px] top-[515px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sunday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[912px] top-[515px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Week 4 Row -->
+                            <!-- Monday - Add Button -->
+                            <div class="w-52 h-32 p-[3px] left-0 top-[702px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="self-stretch flex-1 px-1.5 py-px bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex flex-col justify-center items-center">
+                                    <div class="self-stretch text-center justify-center text-white text-4xl font-normal font-inter leading-10">✚</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tuesday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[228px] top-[702px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Wednesday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[456px] top-[702px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Saturday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[684px] top-[702px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sunday - Add Exercise -->
+                            <div class="w-52 h-32 p-[3px] left-[912px] top-[702px] absolute bg-gradient-to-br from-slate-100 to-white rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-gray-300 inline-flex flex-col justify-center items-center overflow-hidden cursor-pointer hover:bg-gray-50 transition-colors">
+                                <div class="opacity-80 flex flex-col justify-start items-center">
+                                    <div class="text-center justify-center text-stone-300 text-sm font-medium font-montserrat">Ajouter un exercice</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                               <!-- Navbar -->
+                <div class="w-full h-28 left-0 top-0 absolute bg-gradient-to-r from-cyan-900 to-slate-900 shadow-[0px_6px_30px_0px_rgba(10,31,47,0.40)] border-b-2 border-gray-300 flex items-center">
+                    <div class="w-full max-w-7xl mx-auto px-8 flex items-center">
+                        <a href="#" class="flex items-center justify-center w-24 h-24 transition-transform duration-200 hover:scale-105 mr-12">
+                            <img class="h-full w-auto object-contain" src="../src/assets/img/logo.png" alt="EspritFit Logo" />
+                        </a>                       
+                        <div class="flex-1 flex items-center justify-between h-full gap-10">
+                            <a href="profil.html" class="h-14 flex-1 flex items-center justify-center bg-white/10 rounded-lg shadow-[0px_6px_20px_0px_rgba(0,0,0,0.10)] hover:opacity-90 transition-all">
+                                <span class="text-white text-lg font-medium font-montserrat">Accueil</span>
+                            </a>
+                            <a href="calendrier.html" class="h-14 flex-1 flex items-center justify-center bg-white/10 rounded-lg shadow-[0px_6px_20px_0px_rgba(0,0,0,0.10)] hover:opacity-90 transition-all">
+                                <span class="text-white text-lg font-medium font-montserrat">Calendrier</span>
+                            </a>
+                            <div class="relative group h-14 flex-1">
+                                <div class="h-full flex items-center justify-center px-6 bg-gradient-to-b from-orange-500 to-red-500 rounded-lg shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)] cursor-pointer hover:opacity-90 transition-all">
+                                    <span class="text-white text-lg font-medium font-montserrat">Suivi Progression</span>
+                                    <svg class="w-4 h-4 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    <div class="py-2">
+                                        <a href="profil.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                            <div class="font-medium">Profil Sportif</div>
+                                        </a>
+                                        <a href="objectifs.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                            <div class="font-medium">Objectifs</div>
+                                        </a>
+                                        <a href="programme.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors active">
+                                            <div class="font-medium">Programme Sportif</div>
+                                        </a>
+                                        <a href="workspace.html" class="dropdown-item block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                                            <div class="font-medium">Espace de Travail</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="activites.html" class="h-14 flex-1 flex items-center justify-center bg-white/10 rounded-lg shadow-[0px_6px_20px_0px_rgba(0,0,0,0.10)] hover:opacity-90 transition-all">
+                                <span class="text-white text-lg font-medium font-montserrat">Activité Sportive</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                <!-- Footer -->
+                <div class="w-full h-40 px-20 pt-4 left-0 top-[1530px] absolute bg-[#1A3B5A] border-t border-gray-300 inline-flex justify-between items-start">
+                    <div class="flex-1 inline-flex flex-col justify-start items-start gap-[5px]">
+                        <div class="self-stretch flex flex-col justify-start items-start">
+                            <div class="self-stretch justify-center text-white text-xl font-bold font-montserrat">ESPRITFIT</div>
+                        </div>
+                        <div class="self-stretch opacity-90 flex flex-col justify-start items-start">
+                            <div class="self-stretch justify-center text-white text-sm font-normal font-montserrat">Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.</div>
+                        </div>
+                    </div>
+                    <div class="inline-flex flex-col justify-start items-end gap-[5px]">
+                        <div class="text-right justify-center text-white text-base font-normal font-montserrat">Campus Esprit, Tunis</div>
+                        <div class="text-right justify-center text-orange-500 text-base font-semibold font-montserrat">sport@esprit.tn</div>
+                        <div class="text-right justify-center text-white text-base font-semibold font-montserrat">71 000 000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functionality for adding exercises
+        document.querySelectorAll('.cursor-pointer').forEach(element => {
+            if (element.textContent.includes('Ajouter un exercice') || element.textContent.includes('✚')) {
+                element.addEventListener('click', function() {
+                    const exerciseName = prompt('Nom de l\'exercice:');
+                    const duration = prompt('Durée (en minutes):');
+                    
+                    if (exerciseName && duration) {
+                        // Transform the element into a scheduled exercise
+                        this.className = 'w-52 h-32 p-3 absolute bg-gradient-to-br from-cyan-900 to-slate-900 rounded-2xl shadow-[-5px_-5px_15px_0px_rgba(255,255,255,0.80)] shadow-[5px_5px_15px_0px_rgba(10,31,47,0.10)] outline outline-[3px] outline-offset-[-3px] outline-orange-500 inline-flex flex-col justify-center items-center gap-[5px] overflow-hidden';
+                        
+                        this.innerHTML = `
+                            <div class="min-w-40 flex flex-col justify-start items-center">
+                                <div class="text-center justify-center text-white text-lg font-bold font-montserrat">${exerciseName} (${duration}min)</div>
+                            </div>
+                            <div class="opacity-80 flex flex-col justify-start items-center">
+                                <div class="text-center justify-center text-neutral-200 text-sm font-medium font-montserrat">Personnalisé</div>
+                            </div>
+                        `;
+                        
+                        // Remove click event
+                        this.onclick = null;
+                        this.classList.remove('cursor-pointer');
+                    }
+                });
+            }
+        });
+
+        // Validate and activate reminders button
+        document.querySelector('.self-stretch.px-6.py-6').addEventListener('click', function() {
+            // Check if at least one exercise is scheduled
+            const scheduledExercises = document.querySelectorAll('.bg-gradient-to-br.from-cyan-900.to-slate-900');
+            
+            if (scheduledExercises.length > 0) {
+                alert('Programme validé ! Les rappels sont maintenant activés.');
+                // Redirect to next page (workspace.html)
+                window.location.href = 'workspace.html';
+            } else {
+                alert('Veuillez ajouter au moins un exercice à votre programme.');
+            }
+        });
+
+        // Status badge interactions
+        document.querySelectorAll('.w-11.h-11').forEach(badge => {
+            badge.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                if (this.textContent.includes('✓')) {
+                    // Change to in progress
+                    this.innerHTML = '<div class="w-5 text-center justify-center text-white text-lg font-bold font-montserrat">↻</div>';
+                } else if (this.textContent.includes('↻')) {
+                    // Change to completed
+                    this.innerHTML = '<div class="text-center justify-center text-white text-lg font-bold font-montserrat">✓</div>';
+                }
+            });
+        });
+
+        // Mettre en surbrillance l'élément de menu actif
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Mettre en surbrillance l'onglet actif dans la barre de navigation
+            document.querySelectorAll('a[href]').forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage || 
+                    (linkHref.includes('programme.html') && currentPage.includes('programme.html'))) {
+                    link.classList.add('bg-white/20', 'shadow-lg');
+                    link.classList.remove('bg-white/10');
+                }
+            });
+            
+            // Mettre en surbrillance l'élément du menu déroulant actif
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                const itemHref = item.getAttribute('href');
+                if (itemHref === currentPage) {
+                    item.classList.add('bg-orange-50', 'text-orange-600');
+                    item.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
