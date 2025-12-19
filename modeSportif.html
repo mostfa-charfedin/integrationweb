@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EspritFit - Quel est ton mood ?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-roboto { font-family: 'Roboto', sans-serif; }
+        .main-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="bg-white m-0 p-0">
+
+    <div class="main-wrapper">
+        <nav class="w-full h-20 px-6 md:px-20 bg-gradient-to-r from-[#1A3B5A] via-[#0A1F2F] to-[#0A1F2F] shadow-[0px_6px_30px_0px_rgba(10,31,47,0.40)] border-b-2 border-[#D0D8E0] flex items-center justify-between z-50">
+            <div class="flex items-center gap-4">
+                <img class="w-16 h-16 object-contain" src="https://placehold.co/104x104" alt="Logo" />
+                <span class="text-white font-montserrat font-bold text-xl tracking-wider hidden sm:block">ESPRITFIT</span>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="acceuil.html" class="text-[#D0D8E0] text-lg font-medium font-montserrat hover:text-white transition">Accueil</a>
+                <a href="#" class="text-[#D0D8E0] text-lg font-medium font-montserrat hover:text-white transition">Calendrier</a>
+                <a href="#" class="text-[#D0D8E0] text-lg font-medium font-montserrat hover:text-white transition">Suivi Progression</a>
+                <div class="px-6 py-3 bg-gradient-to-b from-[#FF6B35] to-[#E74C3C] rounded-3xl shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)] cursor-pointer">
+                    <span class="text-white text-lg font-medium font-montserrat">Activité Sportif</span>
+                </div>
+            </div>
+            
+            <div class="w-10 h-10 bg-[#E3E3E3] rounded-full flex items-center justify-center">
+                <span class="text-[#0A1F2F] text-[10px] font-bold">USER</span>
+            </div>
+        </nav>
+
+        <main class="flex-grow w-full flex flex-col items-center justify-center relative py-12 px-6">
+            
+            <div class="absolute left-10 top-10 w-12 h-12 border-4 border-[#FF6B35] hidden xl:block"></div>
+
+            <div class="text-center max-w-3xl mb-12">
+                <h1 class="text-[#0A1F2F] text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    Quel est ton mood sportif du jour ?
+                </h1>
+                <p class="text-[#2C2C2C] text-xl md:text-2xl font-medium">
+                    Quel type d’activité veux-tu faire aujourd’hui ?
+                </p>
+            </div>
+
+            <div class="w-full max-w-xl bg-white p-2 relative">
+                <div class="w-full h-14 rounded-lg outline outline-[3px] outline-[#E74C3C] flex items-center justify-between px-4 bg-white relative z-20">
+                    <span class="text-slate-900 font-roboto text-base tracking-wide">Choix d’activité</span>
+                    <div class="flex items-center">
+                        <div class="w-0.5 h-6 bg-[#E74C3C] mr-3"></div>
+                        <span class="text-[#0A1F2F]">▼</span>
+                    </div>
+                </div>
+
+                <div class="absolute -right-16 md:-right-36 top-2 hidden md:flex items-center gap-6">
+                    <div class="w-10 h-10 bg-[#FF6B35] rounded-xl flex items-center justify-center text-white shadow-lg cursor-pointer">
+                        <span class="text-xl">⚙</span>
+                    </div>
+                    <div class="h-10 px-5 rounded-lg outline outline-[3px] outline-[#E74C3C] flex items-center justify-center bg-white whitespace-nowrap">
+                        <span class="text-[#0A1F2F] font-medium">Filtre</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 w-64 bg-[#FFF5F0] rounded-lg shadow-xl border border-[#D0D8E0] overflow-hidden">
+                    <ul class="flex flex-col">
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer border-b border-[#D0D8E0]/30 text-slate-900 font-roboto">Weightlifting</li>
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer border-b border-[#D0D8E0]/30 text-slate-900 font-roboto">Yoga</li>
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer border-b border-[#D0D8E0]/30 text-slate-900 font-roboto">Pilates</li>
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer text-slate-900 font-roboto">Danse / Zumba</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 w-full max-w-3xl flex flex-col sm:flex-row justify-between items-center gap-6">
+                <button class="w-40 h-12 bg-[#FFF5F0] rounded-lg outline outline-1 outline-slate-700 text-[#2C2C2C] font-medium hover:bg-gray-100 transition">
+                    annuler
+                </button>
+                <button class="w-40 h-12 bg-[#2C3B4D] rounded-lg outline outline-1 outline-[#FF6B35] text-[#F5F5F5] font-medium shadow-md hover:bg-[#1A3B5A] transition">
+                    Valider
+                </button>
+            </div>
+        </main>
+
+        <footer class="w-full bg-[#1A3B5A] border-t border-[#D0D8E0] px-6 md:px-20 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1">
+                <h3 class="text-white text-xl font-bold font-montserrat mb-1">ESPRITFIT</h3>
+                <p class="text-white text-sm opacity-90 font-montserrat max-w-sm">
+                    Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+                </p>
+            </div>
+            <div class="flex flex-col items-end gap-1 font-montserrat">
+                <p class="text-white text-base">Campus Esprit, Tunis</p>
+                <p class="text-[#FF6B35] text-base font-semibold">sport@esprit.tn</p>
+                <p class="text-white text-base font-semibold">71 000 000</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
