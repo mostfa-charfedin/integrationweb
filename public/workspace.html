@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EspritFit - Espace de Travail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white font-inter">
+
+    <div class="w-full min-h-screen flex flex-col bg-gradient-to-br from-orange-50 to-slate-100 relative overflow-x-hidden">
+        
+        <header class="bg-gradient-to-r from-[#0A1F2F] to-[#1A3B5A] text-white">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="./assets/img/logo.png" class="h-16 w-16 md:h-20 md:w-20" alt="Logo" />
+                    <span class="font-bold text-lg">ESPRITFIT</span>
+                </div>
+
+                <nav class="hidden md:flex gap-3 items-center">
+                    <a href="./index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+                    <a href="./calendrier.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+                    <div class="relative group">
+                        <button type="button" data-nav-button="suivi" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+                            Suivi Progression
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="./suivi_progression.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-chart-line text-orange-500"></i>
+                                        <span class="font-medium">Mon Suivi</span>
+                                    </div>
+                                </a>
+                                <a href="./journal_activite.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-book text-orange-500"></i>
+                                        <span class="font-medium">Journal d'Activité</span>
+                                    </div>
+                                </a>
+                                <a href="./recompense.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-trophy text-orange-500"></i>
+                                        <span class="font-medium">Récompenses</span>
+                                    </div>
+                                </a>
+                                <a href="./chatCoach.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-comments text-orange-500"></i>
+                                        <span class="font-medium">Chat Coach</span>
+                                    </div>
+                                </a>
+                                <a href="./objectifs.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-bullseye text-orange-500"></i>
+                                        <span class="font-medium">Objectifs</span>
+                                    </div>
+                                </a>
+                                <a href="./programme.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-dumbbell text-orange-500"></i>
+                                        <span class="font-medium">Programme</span>
+                                    </div>
+                                </a>
+                                <a href="./workspace.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-briefcase text-orange-500"></i>
+                                        <span class="font-medium">Workspace</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button type="button" data-nav-button="activites" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+                            Activités sportif
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="./interface1.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix de niveau</a>
+                                <a href="./confirmationInfo.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Confirmation Info</a>
+                                <a href="./choixActiv.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix Activ</a>
+                                <a href="./modeSportif.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Mode Sportif</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+                </nav>
+
+                <button id="mobileMenuButton" type="button" class="md:hidden text-white text-2xl" aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <div id="mobileMenu" class="md:hidden hidden bg-[#0A1F2F] text-white border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+                <a href="./index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+                <a href="./calendrier.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+                <div class="pt-3 mt-2 border-t border-white/10">
+                    <button
+                        type="button"
+                        class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+                        data-nav-mobile-button="suivi"
+                        data-mobile-accordion-button
+                        aria-expanded="false"
+                        aria-controls="mobileSubmenuSuivi"
+                    >
+                        <span class="text-sm font-semibold opacity-90">Suivi Progression</span>
+                        <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+                    </button>
+
+                    <div id="mobileSubmenuSuivi" class="hidden mt-2" data-mobile-accordion-panel>
+                        <a href="./suivi_progression.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mon Suivi</a>
+                        <a href="./journal_activite.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Journal d'Activité</a>
+                        <a href="./recompense.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Récompenses</a>
+                        <a href="./chatCoach.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Chat Coach</a>
+                        <a href="./objectifs.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Objectifs</a>
+                        <a href="./programme.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Programme</a>
+                        <a href="./workspace.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Workspace</a>
+                    </div>
+                </div>
+
+                <div class="pt-3 mt-2 border-t border-white/10">
+                    <button
+                        type="button"
+                        class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+                        data-nav-mobile-button="activites"
+                        data-mobile-accordion-button
+                        aria-expanded="false"
+                        aria-controls="mobileSubmenuActivites"
+                    >
+                        <span class="text-sm font-semibold opacity-90">Activités sportif</span>
+                        <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+                    </button>
+
+                    <div id="mobileSubmenuActivites" class="hidden mt-2" data-mobile-accordion-panel>
+                        <a href="./interface1.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix de niveau</a>
+                        <a href="./confirmationInfo.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Confirmation Info</a>
+                        <a href="./choixActiv.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix Activ</a>
+                        <a href="./modeSportif.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mode Sportif</a>
+                    </div>
+                </div>
+
+                <a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+            </div>
+        </div>
+
+        <main class="flex-1 w-full max-w-6xl mx-auto pt-16 pb-20 flex flex-col items-center">
+            <div class="pb-0 relative border-b-[3px] border-gray-300 flex flex-col items-center">
+                <div class="inline-flex justify-center items-center gap-4 pb-6">
+                    <div class="text-4xl font-bold font-playfair">🚀</div>
+                    <div class="text-slate-900 text-5xl font-bold font-inter [text-shadow:_2px_2px_4px_rgb(10_31_47_/_0.10)]">Espace de Travail</div>
+                </div>
+                <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-t-sm mb-[-3px] relative z-10"></div>
+            </div>
+
+            <div class="w-full max-w-4xl mt-20 px-6 py-12 opacity-60 bg-white rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-center items-center">
+                <div class="text-center text-neutral-400 text-xl font-bold font-inter italic">C'est Validé</div>
+            </div>
+        </main>
+
+        <footer class="w-full h-32 bg-[#1A3B5A] border-t border-gray-300 px-20 flex justify-between items-center text-white shrink-0">
+            <div class="flex flex-col gap-1">
+                <div class="text-xl font-bold font-montserrat">ESPRITFIT</div>
+                <div class="opacity-80 text-sm font-montserrat max-w-md">Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.</div>
+            </div>
+            <div class="flex flex-col items-end text-sm font-montserrat">
+                <div>Campus Esprit, Tunis</div>
+                <div class="text-orange-500 font-semibold">sport@esprit.tn</div>
+                <div class="font-semibold">71 000 000</div>
+            </div>
+        </footer>
+
+        <div id="notificationModal" class="fixed inset-0 bg-slate-900/95 flex justify-center items-center z-50 transition-all duration-300">
+            <div class="w-[520px] bg-gradient-to-br from-white to-slate-100 rounded-[20px] p-10 shadow-2xl relative border border-gray-300">
+                <div id="closeModal" class="absolute top-6 right-6 cursor-pointer text-red-500 text-xl font-bold hover:scale-110 transition-transform">✖</div>
+                
+                <div class="flex flex-col items-center">
+                    <div class="text-5xl mb-4">🔔</div>
+                    <div class="text-cyan-900 text-base font-bold font-montserrat uppercase tracking-widest mb-1">Rappel</div>
+                    <div class="text-slate-900 text-4xl font-bold font-inter mb-8">Pause études !</div>
+                    
+                    <div class="text-center mb-10">
+                        <span class="text-slate-900 text-lg font-semibold font-montserrat">C'est l'heure de ta </span>
+                        <span class="text-orange-500 text-lg font-extrabold font-montserrat">séance de yoga (18h00)</span>
+                        <span class="text-slate-900 text-lg font-semibold font-montserrat">.</span>
+                        <div class="text-slate-900 text-lg font-semibold font-montserrat mt-2">Tes écouteurs sont prêts ?</div>
+                    </div>
+
+                    <div id="goButton" class="w-full h-14 bg-gradient-to-b from-orange-500 to-red-500 rounded-xl shadow-lg flex justify-center items-center cursor-pointer hover:opacity-90 mb-4">
+                        <div class="text-white text-xl font-bold font-inter">J'y vais !</div>
+                    </div>
+                    
+                    <div id="snoozeButton" class="w-full h-14 bg-white border-2 border-gray-300 rounded-xl flex justify-center items-center cursor-pointer hover:bg-gray-50">
+                        <div class="text-slate-900 text-lg font-bold font-inter">Reporter 15 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('notificationModal');
+        const closeModal = () => { modal.style.opacity = '0'; modal.style.visibility = 'hidden'; };
+        
+        document.getElementById('closeModal').onclick = closeModal;
+        document.getElementById('goButton').onclick = () => { alert('Bonne séance !'); closeModal(); };
+        document.getElementById('snoozeButton').onclick = () => { alert('Reporté de 15 min'); closeModal(); };
+    </script>
+
+    <script>
+        // Menu mobile (hamburger) + accordéons multiples
+        (() => {
+            const button = document.getElementById('mobileMenuButton');
+            const menu = document.getElementById('mobileMenu');
+            if (!button || !menu) return;
+
+            const accordionButtons = Array.from(menu.querySelectorAll('[data-mobile-accordion-button]'));
+            const closeAllAccordions = () => {
+                accordionButtons.forEach((btn) => {
+                    const panelId = btn.getAttribute('aria-controls');
+                    const panel = panelId ? document.getElementById(panelId) : null;
+                    const icon = btn.querySelector('[data-mobile-accordion-icon]');
+                    panel?.classList.add('hidden');
+                    btn.setAttribute('aria-expanded', 'false');
+                    icon?.classList.remove('rotate-180');
+                });
+            };
+
+            const closeMenu = () => {
+                menu.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+                closeAllAccordions();
+            };
+
+            const toggleMenu = () => {
+                const isHidden = menu.classList.contains('hidden');
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                } else {
+                    closeMenu();
+                }
+            };
+
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleMenu();
+            });
+
+            accordionButtons.forEach((btn) => {
+                btn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const panelId = btn.getAttribute('aria-controls');
+                    if (!panelId) return;
+                    const panel = document.getElementById(panelId);
+                    if (!panel) return;
+                    const icon = btn.querySelector('[data-mobile-accordion-icon]');
+
+                    accordionButtons.forEach((otherBtn) => {
+                        if (otherBtn === btn) return;
+                        const otherPanelId = otherBtn.getAttribute('aria-controls');
+                        const otherPanel = otherPanelId ? document.getElementById(otherPanelId) : null;
+                        const otherIcon = otherBtn.querySelector('[data-mobile-accordion-icon]');
+                        otherPanel?.classList.add('hidden');
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        otherIcon?.classList.remove('rotate-180');
+                    });
+
+                    const isHidden = panel.classList.contains('hidden');
+                    if (isHidden) {
+                        panel.classList.remove('hidden');
+                        btn.setAttribute('aria-expanded', 'true');
+                        icon?.classList.add('rotate-180');
+                    } else {
+                        panel.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                        icon?.classList.remove('rotate-180');
+                    }
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (menu.classList.contains('hidden')) return;
+                if (menu.contains(event.target) || button.contains(event.target)) return;
+                closeMenu();
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) closeMenu();
+            });
+        })();
+
+        // Surlignage orange du menu actif (desktop + mobile)
+        (() => {
+            const currentFile = (window.location.pathname.split('/').pop() || '').trim() || 'index.html';
+
+            const suiviPages = new Set([
+                'suivi_progression.html',
+                'journal_activite.html',
+                'recompense.html',
+                'chatCoach.html',
+                'objectifs.html',
+                'programme.html',
+                'workspace.html',
+            ]);
+            const activitesPages = new Set([
+                'interface1.html',
+                'interface2.html',
+                'interface3.html',
+                'interface4.html',
+                'interface5(doua).html',
+                'confirmationInfo.html',
+                'choixActiv.html',
+                'modeSportif.html',
+            ]);
+
+            const makeOrange = (el) => {
+                if (!el) return;
+                el.classList.remove('bg-white/10', 'hover:bg-white/20');
+                el.classList.add(
+                    'bg-gradient-to-r',
+                    'from-orange-500',
+                    'to-red-500',
+                    'font-bold',
+                    'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+                    'hover:opacity-90'
+                );
+            };
+
+            const clearOrange = (el) => {
+                if (!el) return;
+                el.classList.remove(
+                    'bg-gradient-to-r',
+                    'from-orange-500',
+                    'to-red-500',
+                    'font-bold',
+                    'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+                    'hover:opacity-90'
+                );
+                if (!el.classList.contains('bg-white/10')) el.classList.add('bg-white/10');
+                if (!el.classList.contains('hover:bg-white/20')) el.classList.add('hover:bg-white/20');
+            };
+
+            const suiviButtons = document.querySelectorAll('[data-nav-button="suivi"], [data-nav-mobile-button="suivi"]');
+            const activitesButtons = document.querySelectorAll('[data-nav-button="activites"], [data-nav-mobile-button="activites"]');
+            const profilButtons = document.querySelectorAll('[data-nav-link="profil"]');
+
+            suiviButtons.forEach(clearOrange);
+            activitesButtons.forEach(clearOrange);
+            profilButtons.forEach(clearOrange);
+
+            if (currentFile === 'profil.html') {
+                profilButtons.forEach(makeOrange);
+            } else if (suiviPages.has(currentFile)) {
+                suiviButtons.forEach(makeOrange);
+            } else if (activitesPages.has(currentFile)) {
+                activitesButtons.forEach(makeOrange);
+            }
+        })();
+    </script>
+</body>
+</html>

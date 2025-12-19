@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EspritFit - Quel est ton mood ?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-roboto { font-family: 'Roboto', sans-serif; }
+        .main-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="bg-white m-0 p-0">
+
+    <div class="main-wrapper">
+                <!-- ================= HEADER (Navbar Coach) ================= -->
+                <header class="bg-gradient-to-r from-[#0A1F2F] to-[#1A3B5A] text-white">
+                    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="./assets/img/logo.png" class="h-16 w-16 md:h-20 md:w-20" alt="Logo">
+                            <span class="font-bold text-lg">ESPRITFIT</span>
+                        </div>
+
+                        <nav class="hidden md:flex gap-3 items-center">
+                            <a href="./index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+                            <a href="./calendrier.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+                            <div class="relative group">
+                                <button type="button" data-nav-button="suivi" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+                                    Suivi Progression
+                                    <i class="fas fa-chevron-down text-sm"></i>
+                                </button>
+                                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    <div class="py-2">
+                                        <a href="./suivi_progression.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-chart-line text-orange-500"></i>
+                                                <span class="font-medium">Mon Suivi</span>
+                                            </div>
+                                        </a>
+                                        <a href="./journal_activite.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-book text-orange-500"></i>
+                                                <span class="font-medium">Journal d'Activité</span>
+                                            </div>
+                                        </a>
+                                        <a href="./recompense.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-trophy text-orange-500"></i>
+                                                <span class="font-medium">Récompenses</span>
+                                            </div>
+                                        </a>
+                                        <a href="./chatCoach.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-comments text-orange-500"></i>
+                                                <span class="font-medium">Chat Coach</span>
+                                            </div>
+                                        </a>
+                                        <a href="./objectifs.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-bullseye text-orange-500"></i>
+                                                <span class="font-medium">Objectifs</span>
+                                            </div>
+                                        </a>
+                                        <a href="./programme.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-dumbbell text-orange-500"></i>
+                                                <span class="font-medium">Programme</span>
+                                            </div>
+                                        </a>
+                                        <a href="./workspace.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                                            <div class="flex items-center gap-3">
+                                                <i class="fas fa-briefcase text-orange-500"></i>
+                                                <span class="font-medium">Workspace</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="relative group">
+                                <button type="button" data-nav-button="activites" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+                                    Activités sportif
+                                    <i class="fas fa-chevron-down text-sm"></i>
+                                </button>
+                                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    <div class="py-2">
+                                            <a href="./interface1.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix de niveau</a>
+                                        <a href="./confirmationInfo.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Confirmation Info</a>
+                                        <a href="./choixActiv.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix Activ</a>
+                                        <a href="./modeSportif.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Mode Sportif</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+                        </nav>
+
+                        <button id="mobileMenuButton" type="button" class="md:hidden text-white text-2xl" aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <div id="mobileMenu" class="md:hidden hidden bg-[#0A1F2F] text-white border-t border-white/10">
+                    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+                        <a href="./index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+                        <a href="./calendrier.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+                        <div class="pt-3 mt-2 border-t border-white/10">
+                            <button
+                                type="button"
+                                class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+                                data-nav-mobile-button="suivi"
+                                data-mobile-accordion-button
+                                aria-expanded="false"
+                                aria-controls="mobileSubmenuSuivi"
+                            >
+                                <span class="text-sm font-semibold opacity-90">Suivi Progression</span>
+                                <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+                            </button>
+                            <div id="mobileSubmenuSuivi" class="hidden mt-2" data-mobile-accordion-panel>
+                                <a href="./suivi_progression.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mon Suivi</a>
+                                <a href="./journal_activite.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Journal d'Activité</a>
+                                <a href="./recompense.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Récompenses</a>
+                                <a href="./chatCoach.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Chat Coach</a>
+                                <a href="./objectifs.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Objectifs</a>
+                                <a href="./programme.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Programme</a>
+                                <a href="./workspace.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Workspace</a>
+                            </div>
+                        </div>
+                        <div class="pt-3 mt-2 border-t border-white/10">
+                            <button
+                                type="button"
+                                class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+                                data-nav-mobile-button="activites"
+                                data-mobile-accordion-button
+                                aria-expanded="false"
+                                aria-controls="mobileSubmenuActivites"
+                            >
+                                <span class="text-sm font-semibold opacity-90">Activités sportif</span>
+                                <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+                            </button>
+                            <div id="mobileSubmenuActivites" class="hidden mt-2" data-mobile-accordion-panel>
+                                <a href="./interface1.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix de niveau</a>
+                                <a href="./confirmationInfo.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Confirmation Info</a>
+                                <a href="./choixActiv.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix Activ</a>
+                                <a href="./modeSportif.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mode Sportif</a>
+                            </div>
+                        </div>
+                        <a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+                    </div>
+                </div>
+
+        <main class="flex-grow w-full flex flex-col items-center justify-center relative py-12 px-6">
+            
+            <div class="absolute left-10 top-10 w-12 h-12 ">
+              <img src="../icons/flech.png" alt="Retour"></div>
+
+            <div class="text-center max-w-3xl mb-12">
+                <h1 class="text-[#0A1F2F] text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    Quel est ton mood sportif du jour ?
+                </h1>
+                <p class="text-[#2C2C2C] text-xl md:text-2xl font-medium">
+                    Quel type d’activité veux-tu faire aujourd’hui ?
+                </p>
+            </div>
+
+            <div class="w-full max-w-xl bg-white p-2 relative">
+                <div class="w-full h-14 rounded-lg outline outline-[3px] outline-[#E74C3C] flex items-center justify-between px-4 bg-white relative z-20">
+                    <span class="text-slate-900 font-roboto text-base tracking-wide">Choix d’activité</span>
+                    <div class="flex items-center">
+                        <div ></div>
+                         <img src="../icons/icon.png" alt="Filtre" class="w-15 h-15" />
+                    </div>
+                </div>
+
+                <div class="absolute -right-16 md:-right-36 top-2 hidden md:flex items-center gap-6">
+    <div class="w-10 h-10 ">
+        <img src="../icons/filter.png" alt="Filtre" class="w-15 h-15" />
+    </div>
+    <div class="h-10 px-5 rounded-lg outline outline-[3px] outline-[#E74C3C] flex items-center justify-center bg-white whitespace-nowrap">
+        <span class="text-[#0A1F2F] font-medium">Filtre</span>
+    </div>
+</div>
+
+                <div class="mt-4 w-64 bg-[#FFF5F0] rounded-lg shadow-xl border border-[#D0D8E0] overflow-hidden">
+                    <ul class="flex flex-col">
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer border-b border-[#D0D8E0]/30 text-slate-900 font-roboto">Weightlifting</li>
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer border-b border-[#D0D8E0]/30 text-slate-900 font-roboto">Yoga</li>
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer border-b border-[#D0D8E0]/30 text-slate-900 font-roboto">Pilates</li>
+                        <li class="px-4 py-4 hover:bg-[#FF6B35] hover:text-white transition cursor-pointer text-slate-900 font-roboto">Danse / Zumba</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 w-full max-w-3xl flex flex-col sm:flex-row justify-between items-center gap-6">
+                <button class="w-40 h-12 bg-[#FFF5F0] rounded-lg outline outline-1 outline-slate-700 text-[#2C2C2C] font-medium hover:bg-gray-100 transition">
+                    annuler
+                </button>
+                <button class="w-40 h-12 bg-[#2C3B4D] rounded-lg outline outline-1 outline-[#FF6B35] text-[#F5F5F5] font-medium shadow-md hover:bg-[#1A3B5A] transition">
+                    Valider
+                </button>
+            </div>
+        </main>
+
+        <footer class="w-full bg-[#1A3B5A] border-t border-[#D0D8E0] px-6 md:px-20 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex-1">
+                <h3 class="text-white text-xl font-bold font-montserrat mb-1">ESPRITFIT</h3>
+                <p class="text-white text-sm opacity-90 font-montserrat max-w-sm">
+                    Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+                </p>
+            </div>
+            <div class="flex flex-col items-end gap-1 font-montserrat">
+                <p class="text-white text-base">Campus Esprit, Tunis</p>
+                <p class="text-[#FF6B35] text-base font-semibold">sport@esprit.tn</p>
+                <p class="text-white text-base font-semibold">71 000 000</p>
+            </div>
+        </footer>
+
+        <script>
+            // Mobile menu (hamburger + accordions)
+            (() => {
+                const button = document.getElementById('mobileMenuButton');
+                const menu = document.getElementById('mobileMenu');
+                if (!button || !menu) return;
+
+                const setExpanded = (expanded) => {
+                    button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                };
+
+                const closeMenu = () => {
+                    menu.classList.add('hidden');
+                    setExpanded(false);
+                };
+
+                const toggleMenu = () => {
+                    const isHidden = menu.classList.contains('hidden');
+                    if (isHidden) {
+                        menu.classList.remove('hidden');
+                        setExpanded(true);
+                    } else {
+                        closeMenu();
+                    }
+                };
+
+                button.addEventListener('click', toggleMenu);
+
+                const accordionButtons = menu.querySelectorAll('[data-mobile-accordion-button]');
+                accordionButtons.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const panelId = btn.getAttribute('aria-controls');
+                        const panel = panelId ? document.getElementById(panelId) : null;
+                        if (!panel) return;
+
+                        const expanded = btn.getAttribute('aria-expanded') === 'true';
+                        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                        panel.classList.toggle('hidden', expanded);
+
+                        const icon = btn.querySelector('[data-mobile-accordion-icon]');
+                        if (icon) icon.classList.toggle('rotate-180', !expanded);
+                    });
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (menu.classList.contains('hidden')) return;
+                    if (menu.contains(event.target) || button.contains(event.target)) return;
+                    closeMenu();
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 768) closeMenu();
+                });
+            })();
+
+            // Active orange highlight (desktop + mobile)
+            (() => {
+                const currentFile = (window.location.pathname.split('/').pop() || '').trim() || 'index.html';
+
+                const suiviPages = new Set([
+                    'suivi_progression.html',
+                    'journal_activite.html',
+                    'recompense.html',
+                    'chatCoach.html',
+                    'objectifs.html',
+                    'programme.html',
+                    'workspace.html',
+                ]);
+
+                const activitesPages = new Set([
+                    'interface1.html',
+                    'interface2.html',
+                    'interface3.html',
+                    'interface4.html',
+                    'interface5(doua).html',
+                    'confirmationInfo.html',
+                    'choixActiv.html',
+                    'modeSportif.html',
+                ]);
+
+                const makeOrange = (el) => {
+                    if (!el) return;
+                    el.classList.remove('bg-white/10', 'hover:bg-white/20');
+                    el.classList.add(
+                        'bg-gradient-to-r',
+                        'from-orange-500',
+                        'to-red-500',
+                        'font-bold',
+                        'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+                        'hover:opacity-90'
+                    );
+                };
+
+                const clearOrange = (el) => {
+                    if (!el) return;
+                    el.classList.remove(
+                        'bg-gradient-to-r',
+                        'from-orange-500',
+                        'to-red-500',
+                        'font-bold',
+                        'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+                        'hover:opacity-90'
+                    );
+                    if (!el.classList.contains('bg-white/10')) el.classList.add('bg-white/10');
+                    if (!el.classList.contains('hover:bg-white/20')) el.classList.add('hover:bg-white/20');
+                };
+
+                const suiviButtons = document.querySelectorAll('[data-nav-button="suivi"], [data-nav-mobile-button="suivi"]');
+                const activitesButtons = document.querySelectorAll('[data-nav-button="activites"], [data-nav-mobile-button="activites"]');
+                const profilButtons = document.querySelectorAll('[data-nav-link="profil"]');
+
+                suiviButtons.forEach(clearOrange);
+                activitesButtons.forEach(clearOrange);
+                profilButtons.forEach(clearOrange);
+
+                if (currentFile === 'profil.html') {
+                    profilButtons.forEach(makeOrange);
+                    return;
+                }
+                if (suiviPages.has(currentFile)) {
+                    suiviButtons.forEach(makeOrange);
+                } else if (activitesPages.has(currentFile)) {
+                    activitesButtons.forEach(makeOrange);
+                }
+            })();
+        </script>
+    </div>
+
+</body>
+</html>

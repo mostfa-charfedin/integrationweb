@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmation d’informations personnelles</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'Miscellaneous-Window-Grabber': '#000000',
+            'Text-Default-Default': '#1E1E1E',
+            'Text-Brand-Default': '#2C2C2C',
+            'Text-Brand-On-Brand': '#F5F5F5',
+            'Background-Default-Default': '#FFFFFF',
+            'Primary-Dark': '#2C3B4D',
+            'Gradient-Start': '#E74C3C',
+            'Gradient-End': '#FFF5F0',
+            'Footer-Background': '#1A3B5A',
+            'Header-Background': '#0A1F2F',
+            'Text-Light': '#D0D8E0',
+            'Text-Neutral': '#E3E3E3',
+          }
+        },
+        fontFamily: {
+          inter: ['Inter', 'sans-serif'],
+          montserrat: ['Montserrat', 'sans-serif'],
+          sfpro: ['SF Pro', 'sans-serif'],
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@400;500;600;700&family=SF+Pro:wght@400;500&display=swap');
+  </style>
+</head>
+<body class="min-h-screen w-full bg-white font-sans flex flex-col">
+
+  <!-- ================= HEADER (Navbar Coach) ================= -->
+  <header class="bg-gradient-to-r from-[#0A1F2F] to-[#1A3B5A] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img src="./assets/img/logo.png" class="h-16 w-16 md:h-20 md:w-20" alt="Logo">
+        <span class="font-bold text-lg">ESPRITFIT</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex gap-3 items-center">
+        <a href="./index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+        <a href="./calendrier.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+        <!-- Dropdown Suivi Progression -->
+        <div class="relative group">
+          <button type="button" data-nav-button="suivi" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+            Suivi Progression
+            <i class="fas fa-chevron-down text-sm"></i>
+          </button>
+
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="py-2">
+              <a href="./suivi_progression.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-chart-line text-orange-500"></i>
+                  <span class="font-medium">Mon Suivi</span>
+                </div>
+              </a>
+              <a href="./journal_activite.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-book text-orange-500"></i>
+                  <span class="font-medium">Journal d'Activité</span>
+                </div>
+              </a>
+              <a href="./recompense.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-trophy text-orange-500"></i>
+                  <span class="font-medium">Récompenses</span>
+                </div>
+              </a>
+              <a href="./chatCoach.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-comments text-orange-500"></i>
+                  <span class="font-medium">Chat Coach</span>
+                </div>
+              </a>
+              <a href="./objectifs.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-bullseye text-orange-500"></i>
+                  <span class="font-medium">Objectifs</span>
+                </div>
+              </a>
+              <a href="./programme.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-dumbbell text-orange-500"></i>
+                  <span class="font-medium">Programme</span>
+                </div>
+              </a>
+              <a href="./workspace.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-briefcase text-orange-500"></i>
+                  <span class="font-medium">Workspace</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown Activités sportif -->
+        <div class="relative group">
+          <button type="button" data-nav-button="activites" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+            Activités sportif
+            <i class="fas fa-chevron-down text-sm"></i>
+          </button>
+
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="py-2">
+              <a href="./interface1.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix de niveau</a>
+              <a href="./confirmationInfo.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Confirmation Info</a>
+              <a href="./choixActiv.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix Activ</a>
+              <a href="./modeSportif.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Mode Sportif</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+      </nav>
+
+      <!-- Menu mobile hamburger -->
+      <button id="mobileMenuButton" type="button" class="md:hidden text-white text-2xl" aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <div id="mobileMenu" class="md:hidden hidden bg-[#0A1F2F] text-white border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+      <a href="./index.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Accueil</a>
+      <a href="./calendrier.html" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Calendrier</a>
+
+      <div class="pt-3 mt-2 border-t border-white/10">
+        <button
+          type="button"
+          class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+          data-nav-mobile-button="suivi"
+          data-mobile-accordion-button
+          aria-expanded="false"
+          aria-controls="mobileSubmenuSuivi"
+        >
+          <span class="text-sm font-semibold opacity-90">Suivi Progression</span>
+          <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+        </button>
+
+        <div id="mobileSubmenuSuivi" class="hidden mt-2" data-mobile-accordion-panel>
+          <a href="./suivi_progression.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mon Suivi</a>
+          <a href="./journal_activite.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Journal d'Activité</a>
+          <a href="./recompense.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Récompenses</a>
+          <a href="./chatCoach.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Chat Coach</a>
+          <a href="./objectifs.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Objectifs</a>
+          <a href="./programme.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Programme</a>
+          <a href="./workspace.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Workspace</a>
+        </div>
+      </div>
+
+      <div class="pt-3 mt-2 border-t border-white/10">
+        <button
+          type="button"
+          class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+          data-nav-mobile-button="activites"
+          data-mobile-accordion-button
+          aria-expanded="false"
+          aria-controls="mobileSubmenuActivites"
+        >
+          <span class="text-sm font-semibold opacity-90">Activités sportif</span>
+          <i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+        </button>
+
+        <div id="mobileSubmenuActivites" class="hidden mt-2" data-mobile-accordion-panel>
+            <a href="./interface1.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix de niveau</a>
+          <a href="./confirmationInfo.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Confirmation Info</a>
+          <a href="./choixActiv.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix Activ</a>
+          <a href="./modeSportif.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mode Sportif</a>
+        </div>
+      </div>
+
+      <a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+    </div>
+  </div>
+
+  <!-- === Main Content === -->
+  <main class="flex-1 w-full px-6 md:px-20 py-8 flex flex-col">
+
+    <!-- 🔙 Flech + Title on Same Line -->
+    <div class="w-full flex items-center justify-between mb-8">
+      <!-- Back Arrow - Left -->
+      <div class="w-24 h-24 ">
+        <img src="../icons/flech.png" alt="Retour" class="w-15 h-15" />
+      </div>
+
+      <!-- Page Title - Centered in full page -->
+      <h1 class="text-[#0A1F2F] text-2xl md:text-4xl font-bold font-inter text-center flex-1">
+        Confirmation d’informations personnelles
+      </h1>
+
+      <!-- Spacer -->
+      <div class="w-12"></div>
+    </div>
+
+    
+
+    <!-- ✅ CENTERED FORM + BUTTONS BLOCK -->
+    <div class="flex justify-center">
+      <div class="flex flex-col md:flex-row gap-8 max-w-max">
+        
+        <!-- Form Fields -->
+        <div class="space-y-6">
+          <!-- Nom -->
+          <div class="flex items-start gap-6">
+            <div class="w-24 flex flex-col justify-center">
+              <div class="h-px w-full border-t border-[#E74C3C]"></div>
+              <span class="text-[#000000] text-lg md:text-xl font-sfpro leading-5">Nom</span>
+            </div>
+            <div class="w-80 px-4 py-3 bg-[#FFFFFF] rounded-lg outline outline-1 outline-offset-[-0.50px] outline-[#E74C3C] flex items-center">
+              <span class="text-[#1E1E1E] text-base font-normal font-inter leading-4">Nour</span>
+            </div>
+          </div>
+
+          <!-- Age -->
+          <div class="flex items-start gap-6">
+            <div class="w-24 flex flex-col justify-center">
+              <div class="h-px w-full border-t border-[#E74C3C]"></div>
+              <span class="text-[#000000] text-lg md:text-xl font-sfpro leading-5">Age</span>
+            </div>
+            <div class="w-80 px-4 py-3 bg-[#FFFFFF] rounded-lg outline outline-1 outline-offset-[-0.50px] outline-[#E74C3C] flex items-center">
+              <span class="text-[#1E1E1E] text-base font-normal font-inter leading-4">25</span>
+            </div>
+          </div>
+
+          <!-- Genre -->
+          <div class="flex items-start gap-6">
+            <div class="w-24 flex flex-col justify-center">
+              <div class="h-px w-full border-t border-[#E74C3C]"></div>
+              <span class="text-[#000000] text-lg md:text-xl font-sfpro leading-5">Genre</span>
+            </div>
+            <div class="w-80 px-4 py-3 bg-[#FFFFFF] rounded-lg outline outline-1 outline-offset-[-0.50px] outline-[#E74C3C] flex items-center">
+              <span class="text-[#1E1E1E] text-base font-normal font-inter leading-4">Femme</span>
+              <img src="../icons/drop.png" alt="Dropdown" class="ml-auto w-4 h-4" />
+            </div>
+          </div>
+
+          <!-- Poids -->
+          <div class="flex items-start gap-6">
+            <div class="w-24 flex flex-col justify-center">
+              <div class="h-px w-full border-t border-[#E74C3C]"></div>
+              <span class="text-[#000000] text-lg md:text-xl font-sfpro leading-5">Poids</span>
+            </div>
+            <div class="w-80 px-4 py-3 bg-[#FFFFFF] rounded-lg outline outline-1 outline-offset-[-0.50px] outline-[#E74C3C] flex items-center">
+              <span class="text-[#1E1E1E] text-base font-normal font-inter leading-4">60 KG</span>
+            </div>
+          </div>
+
+          <!-- Taille -->
+          <div class="flex items-start gap-6">
+            <div class="w-24 flex flex-col justify-center">
+              <div class="h-px w-full border-t border-[#E74C3C]"></div>
+              <span class="text-[#000000] text-lg md:text-xl font-sfpro leading-5">Taille</span>
+            </div>
+            <div class="w-80 px-4 py-3 bg-[#FFFFFF] rounded-lg outline outline-1 outline-offset-[-0.50px] outline-[#E74C3C] flex items-center">
+              <span class="text-[#1E1E1E] text-base font-normal font-inter leading-4">170 Cm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons - Right of Form -->
+        <div class="flex flex-col gap-9 w-48 flex-shrink-0">
+          <button class="w-full h-12 p-3 bg-[#2C3B4D] rounded-lg outline outline-1 outline-offset-[-1px] outline-orange-300 flex justify-center items-center">
+            <span class="text-[#F5F5F5] text-base font-normal font-inter">Valider</span>
+          </button>
+          <button class="w-full h-12 p-3 bg-gradient-to-r from-[#E74C3C] to-[#FFF5F0] rounded-lg outline outline-1 outline-offset-[-1px] outline-[#2C3B4D] flex justify-center items-center">
+            <span class="text-[#2C2C2C] text-base font-normal font-inter">Modifier</span>
+          </button>
+          <button class="w-full h-12 p-3 bg-[#FFF5F0] rounded-lg outline outline-1 outline-offset-[-1px] outline-[#2C3B4D] flex justify-center items-center">
+            <span class="text-[#2C2C2C] text-base font-normal font-inter">annuler</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- === Footer (Full Width - Already Correct) === -->
+  <footer class="w-full h-24 md:h-28 px-6 md:px-20 pt-px bg-[#1A3B5A] border-t border-[#D0D8E0] flex flex-col md:flex-row justify-between items-center gap-4 flex-shrink-0">
+    <div>
+      <div class="font-montserrat text-white text-lg md:text-xl font-bold">ESPRITFIT</div>
+      <div class="font-montserrat text-white text-xs md:text-sm font-normal opacity-90">
+        Plateforme universitaire pour découvrir, planifier et réserver des activités sportives.
+      </div>
+    </div>
+    <div class="text-right font-montserrat text-xs md:text-base">
+      <div class="text-white">Campus Esprit, Tunis</div>
+      <div class="text-[#FF6B35] font-semibold">sport@esprit.tn</div>
+      <div class="text-white font-semibold">71 000 000</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu (hamburger + accordions)
+    (() => {
+      const button = document.getElementById('mobileMenuButton');
+      const menu = document.getElementById('mobileMenu');
+      if (!button || !menu) return;
+
+      const setExpanded = (expanded) => {
+        button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      };
+
+      const closeMenu = () => {
+        menu.classList.add('hidden');
+        setExpanded(false);
+      };
+
+      const toggleMenu = () => {
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          setExpanded(true);
+        } else {
+          closeMenu();
+        }
+      };
+
+      button.addEventListener('click', toggleMenu);
+
+      // Accordions
+      const accordionButtons = menu.querySelectorAll('[data-mobile-accordion-button]');
+      accordionButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const panelId = btn.getAttribute('aria-controls');
+          const panel = panelId ? document.getElementById(panelId) : null;
+          if (!panel) return;
+
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          panel.classList.toggle('hidden', expanded);
+
+          const icon = btn.querySelector('[data-mobile-accordion-icon]');
+          if (icon) icon.classList.toggle('rotate-180', !expanded);
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (event) => {
+        if (menu.classList.contains('hidden')) return;
+        if (menu.contains(event.target) || button.contains(event.target)) return;
+        closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) closeMenu();
+      });
+    })();
+
+    // Active orange highlight (desktop + mobile)
+    (() => {
+      const currentFile = (window.location.pathname.split('/').pop() || '').trim() || 'index.html';
+
+      const suiviPages = new Set([
+        'suivi_progression.html',
+        'journal_activite.html',
+        'recompense.html',
+        'chatCoach.html',
+        'objectifs.html',
+        'programme.html',
+        'workspace.html',
+      ]);
+
+      const activitesPages = new Set([
+        'interface1.html',
+        'interface2.html',
+        'interface3.html',
+        'interface4.html',
+        'interface5(doua).html',
+        'confirmationInfo.html',
+        'choixActiv.html',
+        'modeSportif.html',
+      ]);
+
+      const makeOrange = (el) => {
+        if (!el) return;
+        el.classList.remove('bg-white/10', 'hover:bg-white/20');
+        el.classList.add(
+          'bg-gradient-to-r',
+          'from-orange-500',
+          'to-red-500',
+          'font-bold',
+          'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+          'hover:opacity-90'
+        );
+      };
+
+      const clearOrange = (el) => {
+        if (!el) return;
+        el.classList.remove(
+          'bg-gradient-to-r',
+          'from-orange-500',
+          'to-red-500',
+          'font-bold',
+          'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+          'hover:opacity-90'
+        );
+        if (!el.classList.contains('bg-white/10')) el.classList.add('bg-white/10');
+        if (!el.classList.contains('hover:bg-white/20')) el.classList.add('hover:bg-white/20');
+      };
+
+      const suiviButtons = document.querySelectorAll('[data-nav-button="suivi"], [data-nav-mobile-button="suivi"]');
+      const activitesButtons = document.querySelectorAll('[data-nav-button="activites"], [data-nav-mobile-button="activites"]');
+      const profilButtons = document.querySelectorAll('[data-nav-link="profil"]');
+
+      suiviButtons.forEach(clearOrange);
+      activitesButtons.forEach(clearOrange);
+      profilButtons.forEach(clearOrange);
+
+      if (currentFile === 'profil.html') {
+        profilButtons.forEach(makeOrange);
+        return;
+      }
+      if (suiviPages.has(currentFile)) {
+        suiviButtons.forEach(makeOrange);
+      } else if (activitesPages.has(currentFile)) {
+        activitesButtons.forEach(makeOrange);
+      }
+    })();
+  </script>
+
+</body>
+</html>

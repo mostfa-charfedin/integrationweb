@@ -4,6 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Integration web</title>
+		<script>
+			// Redirection immédiate vers l'accueil principal
+			window.location.replace('./acceuilAhlem.html');
+		</script>
 		<link rel="stylesheet" href="./output.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 	</head>
@@ -22,7 +26,8 @@
 					<div class="relative group">
 						<button
 							type="button"
-							class="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 font-bold shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)] hover:opacity-90 transition flex items-center gap-2"
+							data-nav-button="suivi"
+							class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2"
 						>
 							Suivi Progression
 							<i class="fas fa-chevron-down text-sm"></i>
@@ -56,11 +61,47 @@
 										<span class="font-medium">Chat Coach</span>
 									</div>
 								</a>
+								<a href="./objectifs.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+									<div class="flex items-center gap-3">
+										<i class="fas fa-bullseye text-orange-500"></i>
+										<span class="font-medium">Objectifs</span>
+									</div>
+								</a>
+								<a href="./programme.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+									<div class="flex items-center gap-3">
+										<i class="fas fa-dumbbell text-orange-500"></i>
+										<span class="font-medium">Programme</span>
+									</div>
+								</a>
+								<a href="./workspace.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">
+									<div class="flex items-center gap-3">
+										<i class="fas fa-briefcase text-orange-500"></i>
+										<span class="font-medium">Workspace</span>
+									</div>
+								</a>
 							</div>
 						</div>
 					</div>
 
-					<a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+					<div class="relative group">
+						<button type="button" data-nav-button="activites" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-2">
+							Activités sportif
+							<i class="fas fa-chevron-down text-sm"></i>
+						</button>
+						<div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+							<div class="py-2">
+								<a href="./interface1.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Interface 1</a>
+								<a href="./interface2.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Interface 2</a>
+								<a href="./interface3.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Interface 3</a>
+								<a href="./interface4.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Interface 4</a>
+								<a href="./confirmationInfo.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Confirmation Info</a>
+								<a href="./choixActiv.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Choix Activ</a>
+								<a href="./modeSportif.html" class="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors">Mode Sportif</a>
+							</div>
+						</div>
+					</div>
+
+					<a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
 				</nav>
 
 				<button id="mobileMenuButton" type="button" class="md:hidden text-white text-2xl" aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu">
@@ -77,6 +118,7 @@
 					<button
 						type="button"
 						class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+						data-nav-mobile-button="suivi"
 						data-mobile-accordion-button
 						aria-expanded="false"
 						aria-controls="mobileSubmenuSuivi"
@@ -90,9 +132,34 @@
 							<a href="./journal_activite.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Journal d'Activité</a>
 							<a href="./recompense.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Récompenses</a>
 							<a href="./chatCoach.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Chat Coach</a>
+							<a href="./objectifs.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Objectifs</a>
+							<a href="./programme.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Programme</a>
+							<a href="./workspace.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Workspace</a>
 					</div>
 				</div>
-				<a href="#" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
+				<div class="pt-3 mt-2 border-t border-white/10">
+					<button
+						type="button"
+						class="w-full px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-between"
+						data-nav-mobile-button="activites"
+						data-mobile-accordion-button
+						aria-expanded="false"
+						aria-controls="mobileSubmenuActivites"
+					>
+						<span class="text-sm font-semibold opacity-90">Activités sportif</span>
+						<i class="fas fa-chevron-down text-sm transition-transform" data-mobile-accordion-icon></i>
+					</button>
+					<div id="mobileSubmenuActivites" class="hidden mt-2" data-mobile-accordion-panel>
+						<a href="./interface1.html" class="block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Interface 1</a>
+						<a href="./interface2.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Interface 2</a>
+						<a href="./interface3.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Interface 3</a>
+						<a href="./interface4.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Interface 4</a>
+						<a href="./confirmationInfo.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Confirmation Info</a>
+						<a href="./choixActiv.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Choix Activ</a>
+						<a href="./modeSportif.html" class="mt-2 block px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Mode Sportif</a>
+					</div>
+				</div>
+				<a href="./profil.html" data-nav-link="profil" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Profil</a>
 			</div>
 		</div>
 
@@ -105,22 +172,22 @@
 				const button = document.getElementById('mobileMenuButton');
 				const menu = document.getElementById('mobileMenu');
 				if (!button || !menu) return;
-
-				const accordionButton = document.querySelector('[data-mobile-accordion-button]');
-				const accordionPanel = document.querySelector('[data-mobile-accordion-panel]');
-				const accordionIcon = document.querySelector('[data-mobile-accordion-icon]');
-
-				const closeAccordion = () => {
-					if (!accordionButton || !accordionPanel) return;
-					accordionPanel.classList.add('hidden');
-					accordionButton.setAttribute('aria-expanded', 'false');
-					accordionIcon?.classList.remove('rotate-180');
+				const accordionButtons = Array.from(menu.querySelectorAll('[data-mobile-accordion-button]'));
+				const closeAllAccordions = () => {
+					accordionButtons.forEach((btn) => {
+						const panelId = btn.getAttribute('aria-controls');
+						const panel = panelId ? document.getElementById(panelId) : null;
+						const icon = btn.querySelector('[data-mobile-accordion-icon]');
+						panel?.classList.add('hidden');
+						btn.setAttribute('aria-expanded', 'false');
+						icon?.classList.remove('rotate-180');
+					});
 				};
 
 				const closeMenu = () => {
 					menu.classList.add('hidden');
 					button.setAttribute('aria-expanded', 'false');
-					closeAccordion();
+					closeAllAccordions();
 				};
 
 				const toggleMenu = () => {
@@ -138,18 +205,36 @@
 					toggleMenu();
 				});
 
-				accordionButton?.addEventListener('click', (event) => {
-					event.stopPropagation();
-					if (!accordionPanel) return;
+				accordionButtons.forEach((btn) => {
+					btn.addEventListener('click', (event) => {
+						event.stopPropagation();
+						const panelId = btn.getAttribute('aria-controls');
+						if (!panelId) return;
+						const panel = document.getElementById(panelId);
+						if (!panel) return;
+						const icon = btn.querySelector('[data-mobile-accordion-icon]');
 
-					const isHidden = accordionPanel.classList.contains('hidden');
-					if (isHidden) {
-						accordionPanel.classList.remove('hidden');
-						accordionButton.setAttribute('aria-expanded', 'true');
-						accordionIcon?.classList.add('rotate-180');
-					} else {
-						closeAccordion();
-					}
+						accordionButtons.forEach((otherBtn) => {
+							if (otherBtn === btn) return;
+							const otherPanelId = otherBtn.getAttribute('aria-controls');
+							const otherPanel = otherPanelId ? document.getElementById(otherPanelId) : null;
+							const otherIcon = otherBtn.querySelector('[data-mobile-accordion-icon]');
+							otherPanel?.classList.add('hidden');
+							otherBtn.setAttribute('aria-expanded', 'false');
+							otherIcon?.classList.remove('rotate-180');
+						});
+
+						const isHidden = panel.classList.contains('hidden');
+						if (isHidden) {
+							panel.classList.remove('hidden');
+							btn.setAttribute('aria-expanded', 'true');
+							icon?.classList.add('rotate-180');
+						} else {
+							panel.classList.add('hidden');
+							btn.setAttribute('aria-expanded', 'false');
+							icon?.classList.remove('rotate-180');
+						}
+					});
 				});
 
 				document.addEventListener('click', (event) => {
@@ -161,6 +246,74 @@
 				window.addEventListener('resize', () => {
 					if (window.innerWidth >= 768) closeMenu();
 				});
+			})();
+
+			// Surlignage orange du menu actif (desktop + mobile)
+			(() => {
+				const currentFile = (window.location.pathname.split('/').pop() || '').trim() || 'index.html';
+
+				const suiviPages = new Set([
+					'suivi_progression.html',
+					'journal_activite.html',
+					'recompense.html',
+					'chatCoach.html',
+					'objectifs.html',
+					'programme.html',
+					'workspace.html',
+				]);
+				const activitesPages = new Set([
+					'interface1.html',
+					'interface2.html',
+					'interface3.html',
+					'interface4.html',
+					'interface5(doua).html',
+					'confirmationInfo.html',
+					'choixActiv.html',
+					'modeSportif.html',
+				]);
+
+				const makeOrange = (el) => {
+					if (!el) return;
+					el.classList.remove('bg-white/10', 'hover:bg-white/20');
+					el.classList.add(
+						'bg-gradient-to-r',
+						'from-orange-500',
+						'to-red-500',
+						'font-bold',
+						'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+						'hover:opacity-90'
+					);
+				};
+
+				const clearOrange = (el) => {
+					if (!el) return;
+					el.classList.remove(
+						'bg-gradient-to-r',
+						'from-orange-500',
+						'to-red-500',
+						'font-bold',
+						'shadow-[0px_6px_20px_0px_rgba(255,107,53,0.40)]',
+						'hover:opacity-90'
+					);
+					if (!el.classList.contains('bg-white/10')) el.classList.add('bg-white/10');
+					if (!el.classList.contains('hover:bg-white/20')) el.classList.add('hover:bg-white/20');
+				};
+
+				const suiviButtons = document.querySelectorAll('[data-nav-button="suivi"], [data-nav-mobile-button="suivi"]');
+				const activitesButtons = document.querySelectorAll('[data-nav-button="activites"], [data-nav-mobile-button="activites"]');
+				const profilButtons = document.querySelectorAll('[data-nav-link="profil"]');
+
+				suiviButtons.forEach(clearOrange);
+				activitesButtons.forEach(clearOrange);
+				profilButtons.forEach(clearOrange);
+
+				if (currentFile === 'profil.html') {
+					profilButtons.forEach(makeOrange);
+				} else if (suiviPages.has(currentFile)) {
+					suiviButtons.forEach(makeOrange);
+				} else if (activitesPages.has(currentFile)) {
+					activitesButtons.forEach(makeOrange);
+				}
 			})();
 		</script>
 	</body>
